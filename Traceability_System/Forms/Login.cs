@@ -41,12 +41,13 @@ namespace Traceability_System.Forms
             if (UserRespond == null)
             {
                 LblInstrucctions.Text = $"Este usuario con codigo {text} no existe";
-                LblInstrucctions.ForeColor = Color.Red;
+                LblInstrucctions.ForeColor = Color.Red; 
                 return;
             }
 
             ValidatorTm.Enabled = false;
-            contextInfo.UserLoginEvent(UserRespond);
+            contextInfo.UserLoginEvent(UserRespond); //User succesfully logged
+            userRepository.RegisterUserLog(UserRespond.Id); //Registering last login
         }
 
         private void ValidatorTm_Tick(object sender, EventArgs e)

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Traceability_System.Helpers;
 using Traceability_System.Models;
 using Traceability_System.Forms;
+using Traceability_System.Repositories;
 
 namespace Traceability_System
 {
@@ -52,6 +53,13 @@ namespace Traceability_System
 
         private void BtnUsers_Click(object sender, EventArgs e)
         {
+            LoadForm(new UsersControlForm());
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UserRepository repo = new UserRepository();
+            repo.UserActiveChange(false, GlobalContext.CurrentUser.Id);
         }
     }
 }

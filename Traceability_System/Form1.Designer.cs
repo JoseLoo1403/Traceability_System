@@ -129,6 +129,7 @@ namespace Traceability_System
             // 
             // MainPanel
             // 
+            this.MainPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 113);
             this.MainPanel.Name = "MainPanel";
@@ -145,6 +146,7 @@ namespace Traceability_System
             this.Controls.Add(this.TopPanel);
             this.Name = "Main";
             this.Text = "Main";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
