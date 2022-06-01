@@ -20,6 +20,11 @@ namespace Traceability_System.Repositories
             return Context.Users.FirstOrDefault(x => x.UserCode == code);
         }
 
+        public List<User> GetAllUsers()
+        {
+            return Context.Users.ToList();
+        }
+
         public void RegisterUserLog(int id)
         {
             var LoggedUser = Context.Users.FirstOrDefault(x => x.Id == id);
@@ -27,9 +32,13 @@ namespace Traceability_System.Repositories
             //Cleaning miliseconds
             DateTime LastLog = DateTime.Now;
             LastLog = new DateTime(LastLog.Ticks - (LastLog.Ticks % TimeSpan.TicksPerSecond), LastLog.Kind);
-
             LoggedUser.LastLogin = LastLog;
-            LoggedUser.Active = true;
+            Context.SaveChanges();
+        }
+
+        public void AddNewUser(User user)
+        {
+            Context.Users.Add(user);
             Context.SaveChanges();
         }
 
@@ -37,12 +46,6 @@ namespace Traceability_System.Repositories
         {
             var CurrentUser = Context.Users.FirstOrDefault(x => x.Id == id);
             CurrentUser.Active = state;
-            Context.SaveChanges();
-        }
-
-        public void AddNewUser(User user)
-        {
-            Context.Users.Add(user);
             Context.SaveChanges();
         }
     }

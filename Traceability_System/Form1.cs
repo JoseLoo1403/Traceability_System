@@ -26,10 +26,17 @@ namespace Traceability_System
         {
             GlobalContext = new GlobalContextInfo();
 
+            //Events
             GlobalContext.UserLoginEventHandler += UserLoggedEvent;
+            GlobalContext.OpenNewFormEventHandler += OpenTabEvent;
 
             //Initial calls
             LoadForm(new Login(GlobalContext));
+        }
+
+        private void OpenTabEvent(object sender, UserControl e)
+        {
+            LoadForm(e);
         }
 
         private void UserLoggedEvent(object sender, User user)
@@ -53,13 +60,7 @@ namespace Traceability_System
 
         private void BtnUsers_Click(object sender, EventArgs e)
         {
-            LoadForm(new UsersControlForm());
-        }
-
-        private void Main_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            UserRepository repo = new UserRepository();
-            repo.UserActiveChange(false, GlobalContext.CurrentUser.Id);
+            LoadForm(new UsersControlForm(GlobalContext));
         }
     }
 }
