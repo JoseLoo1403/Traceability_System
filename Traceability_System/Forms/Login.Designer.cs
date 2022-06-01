@@ -29,18 +29,12 @@ namespace Traceability_System.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblInstrucctions = new System.Windows.Forms.Label();
+            this.TxtCode = new System.Windows.Forms.TextBox();
+            this.ValidatorTm = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(277, 367);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(368, 27);
-            this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -53,23 +47,38 @@ namespace Traceability_System.Forms
             this.label1.TabIndex = 1;
             this.label1.Text = "Sistema de trazabilidad APTIV";
             // 
-            // label2
+            // LblInstrucctions
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(389, 316);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Escanee su codigo";
+            this.LblInstrucctions.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblInstrucctions.AutoSize = true;
+            this.LblInstrucctions.Location = new System.Drawing.Point(389, 316);
+            this.LblInstrucctions.Name = "LblInstrucctions";
+            this.LblInstrucctions.Size = new System.Drawing.Size(131, 20);
+            this.LblInstrucctions.TabIndex = 2;
+            this.LblInstrucctions.Text = "Escanee su codigo";
+            // 
+            // TxtCode
+            // 
+            this.TxtCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtCode.Location = new System.Drawing.Point(348, 384);
+            this.TxtCode.Name = "TxtCode";
+            this.TxtCode.Size = new System.Drawing.Size(237, 27);
+            this.TxtCode.TabIndex = 4;
+            this.TxtCode.TextChanged += new System.EventHandler(this.TxtCode_TextChanged);
+            // 
+            // ValidatorTm
+            // 
+            this.ValidatorTm.Enabled = true;
+            this.ValidatorTm.Interval = 500;
+            this.ValidatorTm.Tick += new System.EventHandler(this.ValidatorTm_Tick);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TxtCode);
+            this.Controls.Add(this.LblInstrucctions);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Name = "Login";
             this.Size = new System.Drawing.Size(939, 581);
             this.ResumeLayout(false);
@@ -78,9 +87,9 @@ namespace Traceability_System.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblInstrucctions;
+        private System.Windows.Forms.TextBox TxtCode;
+        private System.Windows.Forms.Timer ValidatorTm;
     }
 }

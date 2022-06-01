@@ -26,30 +26,32 @@ namespace Traceability_System
             GlobalContext = new GlobalContextInfo();
 
             GlobalContext.UserLoginEventHandler += UserLoggedEvent;
+
+            //Initial calls
+            LoadForm(new Login(GlobalContext));
         }
 
         private void UserLoggedEvent(object sender, User user)
         {
-            
+            LoadForm(new PieceScanForm());
+            LblUser.Text = GlobalContext.CurrentUser.Name;
         }
 
         private void LoadForm(object form)
         {
-            //if (MainPanel.Controls.Count > 0)
-            //    MainPanel.Controls.RemoveAt(0);
-            //f.Dock = DockStyle.Fill;
-            //MainPanel.Controls.Add(f);
-            //MainPanel.Tag = f;
-        }
-        private void BtnScanPiece_Click(object sender, EventArgs e)
-        {
             if (MainPanel.Controls.Count > 0)
                 MainPanel.Controls.RemoveAt(0);
-            Login f = new Login();
+            UserControl f = form as UserControl;
             f.Dock = DockStyle.Fill;
             MainPanel.Controls.Add(f);
             MainPanel.Tag = f;
-            LoadForm(new Login());
+        }
+        private void BtnScanPiece_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnUsers_Click(object sender, EventArgs e)
+        {
         }
     }
 }

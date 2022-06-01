@@ -11,9 +11,11 @@ namespace Traceability_System.Helpers
     {
         public event EventHandler<User> UserLoginEventHandler;
 
+        public User CurrentUser { get; set; }
 
         public void UserLoginEvent(User user)
         {
+            CurrentUser = user;
             UserLoginEventHandler?.Invoke(this,user);
         }
     }

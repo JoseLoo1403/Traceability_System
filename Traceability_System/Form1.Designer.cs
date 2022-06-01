@@ -30,6 +30,7 @@ namespace Traceability_System
         private void InitializeComponent()
         {
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.LblUser = new System.Windows.Forms.Label();
             this.BtnConfiguration = new System.Windows.Forms.Button();
             this.BtnLogRecords = new System.Windows.Forms.Button();
             this.BtnUsers = new System.Windows.Forms.Button();
@@ -43,6 +44,7 @@ namespace Traceability_System
             this.TopPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.TopPanel.BackgroundImage = global::Traceability_System.Properties.Resources.DegradadoTraza;
             this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TopPanel.Controls.Add(this.LblUser);
             this.TopPanel.Controls.Add(this.BtnConfiguration);
             this.TopPanel.Controls.Add(this.BtnLogRecords);
             this.TopPanel.Controls.Add(this.BtnUsers);
@@ -53,8 +55,22 @@ namespace Traceability_System
             this.TopPanel.Size = new System.Drawing.Size(1173, 113);
             this.TopPanel.TabIndex = 0;
             // 
+            // LblUser
+            // 
+            this.LblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblUser.AutoSize = true;
+            this.LblUser.BackColor = System.Drawing.Color.Transparent;
+            this.LblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LblUser.Location = new System.Drawing.Point(1037, 9);
+            this.LblUser.Name = "LblUser";
+            this.LblUser.Size = new System.Drawing.Size(54, 28);
+            this.LblUser.TabIndex = 4;
+            this.LblUser.Text = "User";
+            // 
             // BtnConfiguration
             // 
+            this.BtnConfiguration.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnConfiguration.BackColor = System.Drawing.Color.Transparent;
             this.BtnConfiguration.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BtnConfiguration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -69,6 +85,7 @@ namespace Traceability_System
             // 
             // BtnLogRecords
             // 
+            this.BtnLogRecords.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnLogRecords.BackColor = System.Drawing.Color.Transparent;
             this.BtnLogRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogRecords.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -82,6 +99,7 @@ namespace Traceability_System
             // 
             // BtnUsers
             // 
+            this.BtnUsers.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnUsers.BackColor = System.Drawing.Color.Transparent;
             this.BtnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUsers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -92,9 +110,11 @@ namespace Traceability_System
             this.BtnUsers.TabIndex = 1;
             this.BtnUsers.Text = "Usuarios";
             this.BtnUsers.UseVisualStyleBackColor = false;
+            this.BtnUsers.Click += new System.EventHandler(this.BtnUsers_Click);
             // 
             // BtnScanPiece
             // 
+            this.BtnScanPiece.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnScanPiece.BackColor = System.Drawing.Color.Transparent;
             this.BtnScanPiece.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnScanPiece.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -127,6 +147,7 @@ namespace Traceability_System
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.TopPanel.ResumeLayout(false);
+            this.TopPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -139,6 +160,7 @@ namespace Traceability_System
         private System.Windows.Forms.Button BtnUsers;
         private System.Windows.Forms.Button BtnScanPiece;
         private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.Label LblUser;
     }
 }
 
