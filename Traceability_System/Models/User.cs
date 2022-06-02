@@ -18,7 +18,8 @@ namespace Traceability_System.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Position { get; set; }
-        public bool? Active { get; set; }
+        public string Shift { get; set; }
+        public bool Active { get; set; }
         public DateTime? LastLogin { get; set; }
 
         public virtual ICollection<LogRecord> LogRecords { get; set; }

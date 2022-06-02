@@ -36,6 +36,7 @@ namespace Traceability_System.Forms
                 Surname = TxtSurname.Text,
                 UserCode = TxtUserCode.Text,
                 Position = TxtPosition.Text,
+                Shift = TxtShift.Text,
                 Active = true,
                 LastLogin = null
             };
@@ -67,6 +68,7 @@ namespace Traceability_System.Forms
             TxtSurname.Clear();
             TxtUserCode.Clear();
             TxtPosition.Clear();
+            TxtShift.Clear();
         }
 
         private void BtnSearchActiveUser_Click(object sender, EventArgs e)

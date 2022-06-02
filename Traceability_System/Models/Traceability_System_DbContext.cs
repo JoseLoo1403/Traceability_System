@@ -26,6 +26,7 @@ namespace Traceability_System.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=DESKTOP-8C1AB2N;Database=Traceability_System_Db;Trusted_Connection=True;");
             }
         }
@@ -82,18 +83,26 @@ namespace Traceability_System.Models
                 entity.Property(e => e.LastLogin).HasColumnType("datetime");
 
                 entity.Property(e => e.Name)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Position)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Shift)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Surname)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.UserCode)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });
