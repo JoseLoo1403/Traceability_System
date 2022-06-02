@@ -30,6 +30,8 @@ namespace Traceability_System
         private void InitializeComponent()
         {
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.BtnLogout = new System.Windows.Forms.Button();
+            this.BtnClose = new System.Windows.Forms.Button();
             this.LblUser = new System.Windows.Forms.Label();
             this.BtnConfiguration = new System.Windows.Forms.Button();
             this.BtnLogRecords = new System.Windows.Forms.Button();
@@ -44,6 +46,8 @@ namespace Traceability_System
             this.TopPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.TopPanel.BackgroundImage = global::Traceability_System.Properties.Resources.DegradadoTraza;
             this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TopPanel.Controls.Add(this.BtnLogout);
+            this.TopPanel.Controls.Add(this.BtnClose);
             this.TopPanel.Controls.Add(this.LblUser);
             this.TopPanel.Controls.Add(this.BtnConfiguration);
             this.TopPanel.Controls.Add(this.BtnLogRecords);
@@ -55,14 +59,43 @@ namespace Traceability_System
             this.TopPanel.Size = new System.Drawing.Size(1173, 113);
             this.TopPanel.TabIndex = 0;
             // 
+            // BtnLogout
+            // 
+            this.BtnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.BtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLogout.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnLogout.Location = new System.Drawing.Point(1040, 0);
+            this.BtnLogout.Name = "BtnLogout";
+            this.BtnLogout.Size = new System.Drawing.Size(97, 37);
+            this.BtnLogout.TabIndex = 6;
+            this.BtnLogout.Text = "Logout";
+            this.BtnLogout.UseVisualStyleBackColor = false;
+            this.BtnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
+            // 
+            // BtnClose
+            // 
+            this.BtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnClose.BackColor = System.Drawing.Color.Transparent;
+            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnClose.Location = new System.Drawing.Point(1136, 0);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(37, 37);
+            this.BtnClose.TabIndex = 5;
+            this.BtnClose.Text = "X";
+            this.BtnClose.UseVisualStyleBackColor = false;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
             // LblUser
             // 
-            this.LblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblUser.AutoSize = true;
             this.LblUser.BackColor = System.Drawing.Color.Transparent;
             this.LblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LblUser.Location = new System.Drawing.Point(1037, 9);
+            this.LblUser.Location = new System.Drawing.Point(12, 9);
             this.LblUser.Name = "LblUser";
             this.LblUser.Size = new System.Drawing.Size(54, 28);
             this.LblUser.TabIndex = 4;
@@ -144,8 +177,10 @@ namespace Traceability_System
             this.ClientSize = new System.Drawing.Size(1173, 685);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.TopPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main";
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
@@ -162,6 +197,8 @@ namespace Traceability_System
         private System.Windows.Forms.Button BtnScanPiece;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label LblUser;
+        private System.Windows.Forms.Button BtnClose;
+        private System.Windows.Forms.Button BtnLogout;
     }
 }
 

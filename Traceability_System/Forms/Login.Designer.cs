@@ -50,13 +50,13 @@ namespace Traceability_System.Forms
             // LblInstrucctions
             // 
             this.LblInstrucctions.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LblInstrucctions.AutoSize = true;
             this.LblInstrucctions.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInstrucctions.Location = new System.Drawing.Point(388, 300);
+            this.LblInstrucctions.Location = new System.Drawing.Point(188, 303);
             this.LblInstrucctions.Name = "LblInstrucctions";
-            this.LblInstrucctions.Size = new System.Drawing.Size(158, 25);
+            this.LblInstrucctions.Size = new System.Drawing.Size(576, 25);
             this.LblInstrucctions.TabIndex = 2;
             this.LblInstrucctions.Text = "Escanee su codigo";
+            this.LblInstrucctions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TxtCode
             // 

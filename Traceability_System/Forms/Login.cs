@@ -40,8 +40,15 @@ namespace Traceability_System.Forms
 
             if (UserRespond == null)
             {
-                LblInstrucctions.Text = $"Este usuario con codigo {text} no existe";
-                LblInstrucctions.ForeColor = Color.Red; 
+                LblInstrucctions.Text = $"El usuario con codigo [ {text} ] no existe";
+                LblInstrucctions.ForeColor = Color.Red;
+                return;
+            }
+
+            if (!UserRespond.Active)
+            {
+                LblInstrucctions.Text = $"El usuario [ {UserRespond.Name} ] no esta autorizado";
+                LblInstrucctions.ForeColor = Color.Red;
                 return;
             }
 

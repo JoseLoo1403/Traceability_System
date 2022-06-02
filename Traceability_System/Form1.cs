@@ -32,6 +32,32 @@ namespace Traceability_System
 
             //Initial calls
             LoadForm(new Login(GlobalContext));
+            ButtonsRestrictions();
+        }
+
+        private void ButtonsRestrictions()
+        {
+            if (GlobalContext.CurrentUser == null)
+            {
+                BtnConfiguration.Enabled = false;
+                BtnScanPiece.Enabled = false;
+                BtnLogRecords.Enabled = false;
+                BtnUsers.Enabled = false;
+                BtnLogout.Enabled = false;
+                BtnClose.Enabled = false;
+                return;
+            }
+
+            BtnLogout.Enabled = true;
+            BtnClose.Enabled = true;
+
+            if (GlobalContext.CurrentUser.Position == "admin")
+            {
+                BtnConfiguration.Enabled = true;
+                BtnScanPiece.Enabled = true;
+                BtnLogRecords.Enabled = true;
+                BtnUsers.Enabled = true;
+            }
         }
 
         private void OpenTabEvent(object sender, UserControl e)
@@ -43,6 +69,7 @@ namespace Traceability_System
         {
             LoadForm(new PieceScanForm());
             LblUser.Text = GlobalContext.CurrentUser.Name;
+            ButtonsRestrictions();
         }
 
         private void LoadForm(object form)
@@ -61,6 +88,26 @@ namespace Traceability_System
         private void BtnUsers_Click(object sender, EventArgs e)
         {
             LoadForm(new UsersControlForm(GlobalContext));
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            if (GlobalContext.CurrentUser.Position == "admin")
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Este usuario no esta autorizado para cerrar el sistema");
+            }
+        }
+
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            GlobalContext.CurrentUser = null;
+            LoadForm(new Login(GlobalContext));
+            LblUser.Text = "";
+            ButtonsRestrictions();
         }
     }
 }
