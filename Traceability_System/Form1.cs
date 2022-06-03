@@ -11,6 +11,7 @@ using Traceability_System.Helpers;
 using Traceability_System.Models;
 using Traceability_System.Forms;
 using Traceability_System.Repositories;
+using Traceability_System.Forms.PieceScanSelectionViews;
 
 namespace Traceability_System
 {
@@ -67,7 +68,7 @@ namespace Traceability_System
 
         private void UserLoggedEvent(object sender, User user)
         {
-            LoadForm(new PieceScanForm());
+            LoadForm(new SelectGenerationForm(GlobalContext));
             LblUser.Text = GlobalContext.CurrentUser.Name;
             ButtonsRestrictions();
         }
