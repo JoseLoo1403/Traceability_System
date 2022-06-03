@@ -48,15 +48,18 @@ namespace Traceability_System.Models
             {
                 entity.ToTable("LogRecord");
 
-                entity.Property(e => e.Accion)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Piece)
+                    .WithMany(p => p.LogRecords)
+                    .HasForeignKey(d => d.PieceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_LogRecord_Pieces");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.LogRecords)
                     .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_LogRecord_User");
             });
 
@@ -65,6 +68,11 @@ namespace Traceability_System.Models
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PieceName)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PiecePartNumber)
+                    .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
@@ -78,7 +86,11 @@ namespace Traceability_System.Models
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.HasKey(e => e.UserCode);
+
                 entity.ToTable("User");
+
+                entity.Property(e => e.UserCode).ValueGeneratedNever();
 
                 entity.Property(e => e.LastLogin).HasColumnType("datetime");
 
@@ -97,11 +109,6 @@ namespace Traceability_System.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Surname)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserCode)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);

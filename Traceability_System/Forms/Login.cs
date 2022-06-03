@@ -36,7 +36,7 @@ namespace Traceability_System.Forms
                 return;
             }
 
-            var UserRespond = userRepository.GetUserByCode(text);
+            var UserRespond = userRepository.GetUserByCode(Convert.ToInt32(text));
 
             if (UserRespond == null)
             {
@@ -54,7 +54,7 @@ namespace Traceability_System.Forms
 
             ValidatorTm.Enabled = false;
             contextInfo.UserLoginEvent(UserRespond); //User succesfully logged
-            userRepository.RegisterUserLog(UserRespond.Id); //Registering last login
+            userRepository.RegisterUserLog(UserRespond.UserCode); //Registering last login
         }
 
         private void ValidatorTm_Tick(object sender, EventArgs e)

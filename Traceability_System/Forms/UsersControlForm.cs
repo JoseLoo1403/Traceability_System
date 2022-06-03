@@ -34,15 +34,24 @@ namespace Traceability_System.Forms
             User NewUser = new User() {
                 Name = TxtName.Text,
                 Surname = TxtSurname.Text,
-                UserCode = TxtUserCode.Text,
+                UserCode = Convert.ToInt32(TxtUserCode.Text),
                 Position = TxtPosition.Text,
                 Shift = TxtShift.Text,
                 Active = true,
                 LastLogin = null
             };
 
-            repo.AddNewUser(NewUser);
             ClearTextBoxes();
+
+            try
+            {
+                repo.AddNewUser(NewUser);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.Message);
+                return;
+            }
 
             LblSaveGuide.Text = "Usuario agregado exitosamente!";
             LblSaveGuide.ForeColor = Color.Green;
@@ -75,7 +84,7 @@ namespace Traceability_System.Forms
         {
             UserRepository repository = new UserRepository();
 
-            CurrentUserActivation = repository.GetUserByCode(TxtActiveUserCode.Text);
+            CurrentUserActivation = repository.GetUserByCode(Convert.ToInt32(TxtActiveUserCode.Text));
 
             if (CurrentUserActivation == null) 
             {
@@ -105,12 +114,12 @@ namespace Traceability_System.Forms
 
             if (CurrentUserActivation.Active == false)
             {
-                repository.UserActiveChange(true, CurrentUserActivation.Id);
+                repository.UserActiveChange(true, CurrentUserActivation.UserCode);
                 LblActivationGuide.Text = $"Usuario [{CurrentUserActivation.Name}] ha sido activado";
             }
             else
             {
-                repository.UserActiveChange(false, CurrentUserActivation.Id);
+                repository.UserActiveChange(false, CurrentUserActivation.UserCode);
                 LblActivationGuide.Text = $"Usuario [{CurrentUserActivation.Name}] ha sido desactivado";
             }
 
