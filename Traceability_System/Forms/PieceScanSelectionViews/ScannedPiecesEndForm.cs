@@ -28,14 +28,39 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void ScannedPiecesEndForm_Load(object sender, EventArgs e)
         {
-            PiecesGv.DataSource = ScannedPieces;
-            //PiecesGv.Columns["User"].Visible = false;
+            LoadInfoGv();
             LblGeneration.Text = $"Generacion {Gen}";
+        }
+
+        private void LoadInfoGv()
+        {
+            PiecesGv.DataSource = ScannedPieces;
+            if (Gen == 1)
+            {
+                PiecesGv.Columns["FinishedGood"].Visible = false;
+            }
+            PiecesGv.Columns["Active"].Visible = false;
+            PiecesGv.Columns["DaysEnable"].Visible = false;
+            PiecesGv.Columns["CreatedDate"].Visible = false;
+            PiecesGv.Columns["UserScanned"].Visible = false;
+            PiecesGv.Columns["ScannedDate"].Visible = false;
+            PiecesGv.Columns["UserScannedNavigation"].Visible = false;
+            PiecesGv.Columns["LogRecords"].Visible = false;
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)
         {
             ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, Gen));
+        }
+
+        private void BtnSaveUser_Click(object sender, EventArgs e)
+        {
+            ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2));
+        }
+
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            ContextInfo.UserLogoutEvent();
         }
     }
 }

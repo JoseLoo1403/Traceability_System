@@ -11,7 +11,9 @@ namespace Traceability_System.Helpers
     public class GlobalContextInfo
     {
         public event EventHandler<User> UserLoginEventHandler;
+        public event EventHandler UserLogoutEventHandler;
         public event EventHandler<UserControl> OpenNewFormEventHandler;
+        public event EventHandler<string> AuthorizationRequiredEventHandler;
 
         public User CurrentUser { get; set; }
 
@@ -24,6 +26,17 @@ namespace Traceability_System.Helpers
         public void OpenNewFormEvent(UserControl form)
         {
             OpenNewFormEventHandler?.Invoke(this, form);
+        }
+
+        public void UserLogoutEvent()
+        {
+            CurrentUser = null;
+            UserLogoutEventHandler?.Invoke(this, new EventArgs());
+        }
+
+        public void AuthorizationRequiredEvent(string command)
+        {
+            AuthorizationRequiredEventHandler?.Invoke(this, command);
         }
     }
 }

@@ -100,9 +100,9 @@ namespace Traceability_System.Forms
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(315, 478);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(224, 28);
+            this.label4.Size = new System.Drawing.Size(253, 28);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Generacion detectada:";
+            this.label4.Text = "Generacion Seleccionada:";
             // 
             // LblComponent
             // 

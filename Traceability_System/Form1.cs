@@ -30,9 +30,11 @@ namespace Traceability_System
             //Events
             GlobalContext.UserLoginEventHandler += UserLoggedEvent;
             GlobalContext.OpenNewFormEventHandler += OpenTabEvent;
+            GlobalContext.UserLogoutEventHandler += UserLogoutEvent;
+            GlobalContext.AuthorizationRequiredEventHandler += AuthorizationLogin;
 
             //Initial calls
-            LoadForm(new Login(GlobalContext));
+            LoadForm(new Login(GlobalContext,"login"));
             ButtonsRestrictions();
         }
 
@@ -65,12 +67,34 @@ namespace Traceability_System
         {
             LoadForm(e);
         }
+        private void UserLogoutEvent(object sender, EventArgs e)
+        {
+            Logout();
+        }
 
         private void UserLoggedEvent(object sender, User user)
         {
             LoadForm(new SelectGenerationForm(GlobalContext));
             LblUser.Text = GlobalContext.CurrentUser.Name;
             ButtonsRestrictions();
+        }
+        
+        private void AuthorizationLogin(object sender, string e)
+        {
+            if (e == "authorization")
+            {
+                Login f = new Login(GlobalContext, e);
+                f.Dock = DockStyle.Fill;
+                MainPanel.Controls.Add(f);
+                MainPanel.Tag = f;
+                MainPanel.Controls[0].Visible = false;
+                MainPanel.Refresh();
+            }
+            else if(e == "active")
+            {
+                MainPanel.Controls.RemoveAt(1);
+                MainPanel.Controls[0].Visible = true;
+            }
         }
 
         private void LoadForm(object form)
@@ -82,8 +106,17 @@ namespace Traceability_System
             MainPanel.Controls.Add(f);
             MainPanel.Tag = f;
         }
+
+        private void Logout()
+        {
+            GlobalContext.CurrentUser = null;
+            LoadForm(new Login(GlobalContext,"login"));
+            LblUser.Text = "";
+            ButtonsRestrictions();
+        }
         private void BtnScanPiece_Click(object sender, EventArgs e)
         {
+            LoadForm(new SelectGenerationForm(GlobalContext));
         }
 
         private void BtnUsers_Click(object sender, EventArgs e)
@@ -105,10 +138,7 @@ namespace Traceability_System
 
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            GlobalContext.CurrentUser = null;
-            LoadForm(new Login(GlobalContext));
-            LblUser.Text = "";
-            ButtonsRestrictions();
+            Logout();
         }
     }
 }

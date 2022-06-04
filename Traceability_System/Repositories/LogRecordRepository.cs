@@ -25,6 +25,7 @@ namespace Traceability_System.Repositories
 
             for (int i = 0; i < 3; i++)
             {
+                LogRecordAdder = new LogRecord();
                 LogRecordAdder.PieceId = pieces[i].Id;
                 LogRecordAdder.PieceSerialNumber = serialNumbers[i];
                 LogRecordAdder.UserId = userCode;

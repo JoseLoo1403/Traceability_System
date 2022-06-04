@@ -41,7 +41,7 @@ namespace Traceability_System.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(255, 157);
+            this.label1.Location = new System.Drawing.Point(260, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(412, 41);
             this.label1.TabIndex = 1;
@@ -51,9 +51,9 @@ namespace Traceability_System.Forms
             // 
             this.LblInstrucctions.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblInstrucctions.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblInstrucctions.Location = new System.Drawing.Point(188, 303);
+            this.LblInstrucctions.Location = new System.Drawing.Point(113, 267);
             this.LblInstrucctions.Name = "LblInstrucctions";
-            this.LblInstrucctions.Size = new System.Drawing.Size(576, 25);
+            this.LblInstrucctions.Size = new System.Drawing.Size(730, 80);
             this.LblInstrucctions.TabIndex = 2;
             this.LblInstrucctions.Text = "Escanee su codigo";
             this.LblInstrucctions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,9 +61,9 @@ namespace Traceability_System.Forms
             // TxtCode
             // 
             this.TxtCode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TxtCode.Location = new System.Drawing.Point(319, 361);
+            this.TxtCode.Location = new System.Drawing.Point(309, 360);
             this.TxtCode.Name = "TxtCode";
-            this.TxtCode.Size = new System.Drawing.Size(285, 27);
+            this.TxtCode.Size = new System.Drawing.Size(335, 27);
             this.TxtCode.TabIndex = 4;
             this.TxtCode.TextChanged += new System.EventHandler(this.TxtCode_TextChanged);
             // 

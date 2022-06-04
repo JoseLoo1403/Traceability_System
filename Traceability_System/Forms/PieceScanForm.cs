@@ -71,6 +71,7 @@ namespace Traceability_System.Forms
             if (piece.Generation != CurrentGeneration)
             {
                 //Different generation detected
+                ContextInfo.AuthorizationRequiredEvent("authorization");
                 return;
             }
 
