@@ -40,6 +40,8 @@ namespace Traceability_System.Forms
             this.LblGeneration = new System.Windows.Forms.Label();
             this.TimerScan = new System.Windows.Forms.Timer(this.components);
             this.LblMainGuide = new System.Windows.Forms.Label();
+            this.TxtFinishGood = new System.Windows.Forms.TextBox();
+            this.LblFinishGood = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -109,7 +111,7 @@ namespace Traceability_System.Forms
             this.LblComponent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblComponent.AutoSize = true;
             this.LblComponent.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblComponent.Location = new System.Drawing.Point(343, 152);
+            this.LblComponent.Location = new System.Drawing.Point(336, 98);
             this.LblComponent.Name = "LblComponent";
             this.LblComponent.Size = new System.Drawing.Size(178, 31);
             this.LblComponent.TabIndex = 6;
@@ -142,10 +144,32 @@ namespace Traceability_System.Forms
             this.LblMainGuide.TabIndex = 8;
             this.LblMainGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // TxtFinishGood
+            // 
+            this.TxtFinishGood.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtFinishGood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtFinishGood.Location = new System.Drawing.Point(296, 226);
+            this.TxtFinishGood.Name = "TxtFinishGood";
+            this.TxtFinishGood.Size = new System.Drawing.Size(267, 34);
+            this.TxtFinishGood.TabIndex = 10;
+            // 
+            // LblFinishGood
+            // 
+            this.LblFinishGood.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblFinishGood.AutoSize = true;
+            this.LblFinishGood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblFinishGood.Location = new System.Drawing.Point(313, 179);
+            this.LblFinishGood.Name = "LblFinishGood";
+            this.LblFinishGood.Size = new System.Drawing.Size(245, 28);
+            this.LblFinishGood.TabIndex = 9;
+            this.LblFinishGood.Text = "ESCANEE EL FINISH GOOD";
+            // 
             // PieceScanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TxtFinishGood);
+            this.Controls.Add(this.LblFinishGood);
             this.Controls.Add(this.LblMainGuide);
             this.Controls.Add(this.LblGeneration);
             this.Controls.Add(this.LblComponent);
@@ -174,5 +198,7 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.Label LblGeneration;
         private System.Windows.Forms.Timer TimerScan;
         private System.Windows.Forms.Label LblMainGuide;
+        private System.Windows.Forms.TextBox TxtFinishGood;
+        private System.Windows.Forms.Label LblFinishGood;
     }
 }

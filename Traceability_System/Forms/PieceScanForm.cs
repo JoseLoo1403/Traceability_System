@@ -23,6 +23,7 @@ namespace Traceability_System.Forms
         List<int> SerialNumbers = new List<int>();
         int CurrentGeneration;
         int CurrentComponentNumber = 1;
+        int FinishGood;
 
         public PieceScanForm(GlobalContextInfo info, int generation)
         {
@@ -31,6 +32,12 @@ namespace Traceability_System.Forms
             repository = new PiecesRepository();
             CurrentGeneration = generation;
             LblGeneration.Text = $"Generacion {generation}";
+
+            if (generation == 1)
+            {
+                LblFinishGood.Hide();
+                TxtFinishGood.Hide();
+            }
         }
 
         private void ValidateInfoForPartNumber()
@@ -75,6 +82,16 @@ namespace Traceability_System.Forms
                 return;
             }
 
+            if (CurrentGeneration == 2)
+            {
+                if (piece.FinishedGood != FinishGood)
+                {
+                    //Different finish good detected
+                    ChangeTextMainGuide("Esta pieza no pertenece a este conjunto", Color.Red);
+                    return;
+                }
+            }
+
             if (piece.Active == false)
             {
                 ChangeTextMainGuide("Esta pieza ya ha sido escaneada", Color.Red);
@@ -106,6 +123,26 @@ namespace Traceability_System.Forms
             ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green);
         }
 
+        private void ValidateInfoForFinishGood()
+        {
+            if (string.IsNullOrEmpty(TxtFinishGood.Text))
+            {
+                return;
+            }
+
+            if (repository.FinishGoodExist(Convert.ToInt32(TxtFinishGood.Text)))
+            {
+                FinishGood = Convert.ToInt32(TxtFinishGood.Text);
+                TxtFinishGood.Hide();
+                LblFinishGood.Hide();
+                ChangeTextMainGuide("Codigo escaneado correctamente", Color.Green);
+            }
+            else
+            {
+                ChangeTextMainGuide($"El codigo {TxtFinishGood.Text} no existe", Color.Red);
+            }
+        }
+
         private void ChangeTextMainGuide(string text, Color color)
         {
             var t = new Timer();
@@ -134,6 +171,14 @@ namespace Traceability_System.Forms
 
         private void TimerScan_Tick(object sender, EventArgs e)
         {
+            if (CurrentGeneration == 2 && FinishGood == 0)
+            {
+                ValidateInfoForFinishGood();
+                TxtFinishGood.Clear();
+                TxtFinishGood.Focus();
+                return;
+            }
+
             if (ScanMode)
             {
                 ValidateInfoForPartNumber();

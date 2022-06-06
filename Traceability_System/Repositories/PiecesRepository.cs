@@ -35,5 +35,11 @@ namespace Traceability_System.Repositories
                 context.SaveChanges();
             }
         }
+
+        public bool FinishGoodExist(int? code)
+        {
+            var res = context.Pieces.FirstOrDefault(x => x.FinishedGood == code);
+            return res != null;
+        }
     }
 }

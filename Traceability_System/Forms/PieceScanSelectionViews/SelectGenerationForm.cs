@@ -25,5 +25,10 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
         {
             ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo,1));
         }
+
+        private void BtnGen2_Click(object sender, EventArgs e)
+        {
+            ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2));
+        }
     }
 }

@@ -10,8 +10,8 @@ using System.Windows.Forms;
 using Traceability_System.Helpers;
 using Traceability_System.Models;
 using Traceability_System.Forms;
-using Traceability_System.Repositories;
 using Traceability_System.Forms.PieceScanSelectionViews;
+using Traceability_System.Forms.EntitiesViews;
 
 namespace Traceability_System
 {
@@ -139,6 +139,11 @@ namespace Traceability_System
         private void BtnLogout_Click(object sender, EventArgs e)
         {
             Logout();
+        }
+
+        private void BtnLogRecords_Click(object sender, EventArgs e)
+        {
+            LoadForm(new LogRecordView());
         }
     }
 }

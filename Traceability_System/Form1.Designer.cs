@@ -129,6 +129,7 @@ namespace Traceability_System
             this.BtnLogRecords.TabIndex = 2;
             this.BtnLogRecords.Text = "Historicos";
             this.BtnLogRecords.UseVisualStyleBackColor = false;
+            this.BtnLogRecords.Click += new System.EventHandler(this.BtnLogRecords_Click);
             // 
             // BtnUsers
             // 

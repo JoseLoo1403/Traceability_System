@@ -34,5 +34,10 @@ namespace Traceability_System.Repositories
                 context.SaveChanges();
             }
         }
+
+        public List<LogRecord> GetAllLogRecord()
+        {
+            return context.LogRecords.ToList();
+        }
     }
 }

@@ -69,6 +69,7 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
             this.BtnGen2.TabIndex = 2;
             this.BtnGen2.Text = "Generacion 2";
             this.BtnGen2.UseVisualStyleBackColor = false;
+            this.BtnGen2.Click += new System.EventHandler(this.BtnGen2_Click);
             // 
             // SelectGenerationForm
             // 
