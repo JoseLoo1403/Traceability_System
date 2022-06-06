@@ -13,8 +13,7 @@ namespace Traceability_System.Models
             Pieces = new HashSet<Piece>();
         }
 
-        public int Id { get; set; }
-        public string UserCode { get; set; }
+        public int UserCode { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Position { get; set; }
