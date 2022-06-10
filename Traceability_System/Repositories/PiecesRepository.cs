@@ -21,6 +21,11 @@ namespace Traceability_System.Repositories
             return context.Pieces.FirstOrDefault(x => x.PiecePartNumber == partNumber);
         }
 
+        public List<Piece> GetAllPieces()
+        {
+            return context.Pieces.ToList();
+        }
+
         public void UpdateScannedPieces(List<Piece> pieces, int userCode)
         {
             DateTime date = DateTime.Now;
@@ -40,6 +45,18 @@ namespace Traceability_System.Repositories
         {
             var res = context.Pieces.FirstOrDefault(x => x.FinishedGood == code);
             return res != null;
+        }
+
+        public void AddPiece(Piece piece)
+        {
+            context.Pieces.Add(piece);
+            context.SaveChanges();
+        }
+
+        public void DeletePiece(Piece piece)
+        {
+            context.Pieces.Remove(piece);
+            context.SaveChanges();
         }
     }
 }

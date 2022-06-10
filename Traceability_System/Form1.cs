@@ -48,6 +48,7 @@ namespace Traceability_System
                 BtnUsers.Enabled = false;
                 BtnLogout.Enabled = false;
                 BtnClose.Enabled = false;
+                BtnPieces.Enabled = false;
                 return;
             }
 
@@ -60,6 +61,7 @@ namespace Traceability_System
                 BtnScanPiece.Enabled = true;
                 BtnLogRecords.Enabled = true;
                 BtnUsers.Enabled = true;
+                BtnPieces.Enabled = true;
             }
         }
 
@@ -144,6 +146,11 @@ namespace Traceability_System
         private void BtnLogRecords_Click(object sender, EventArgs e)
         {
             LoadForm(new LogRecordView());
+        }
+
+        private void BtnPieces_Click(object sender, EventArgs e)
+        {
+            LoadForm(new AddPiecesForm(GlobalContext));
         }
     }
 }

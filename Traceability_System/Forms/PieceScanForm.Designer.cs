@@ -168,6 +168,7 @@ namespace Traceability_System.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.TxtFinishGood);
             this.Controls.Add(this.LblFinishGood);
             this.Controls.Add(this.LblMainGuide);
