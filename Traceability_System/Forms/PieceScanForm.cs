@@ -24,6 +24,7 @@ namespace Traceability_System.Forms
         int CurrentGeneration;
         int CurrentComponentNumber = 1;
         int FinishGood;
+        int CurrentPieceId = 0;
 
         public PieceScanForm(GlobalContextInfo info, int generation)
         {
@@ -98,6 +99,13 @@ namespace Traceability_System.Forms
                 return;
             }
 
+            //Validate days
+            if (!DaysEnableValidator((int)piece.DaysEnable,(DateTime)piece.CreatedDate))
+            {
+                ChangeTextMainGuide("Esta pieza a expirado", Color.Red);
+                return;
+            }
+
             if (piece.ComponentNumber != CurrentComponentNumber)
             {
                 //Not correct order of piece
@@ -107,6 +115,7 @@ namespace Traceability_System.Forms
 
             ScannedPieces.Add(piece);
             ScanMode = false;
+            CurrentPieceId = piece.Id;
             ChangeTextMainGuide($"Pieza {piece.PieceName} escaneada correctamente", Color.Green);
         }
 
@@ -114,13 +123,43 @@ namespace Traceability_System.Forms
         {
             if (string.IsNullOrEmpty(TxtSerialNumber.Text)) { return; }
 
-            SerialNumbers.Add(Convert.ToInt32(TxtSerialNumber.Text));
+            if (GetAndValidateSerialNumber())
+            {
+                SerialNumbers.Add(Convert.ToInt32(TxtSerialNumber.Text));
+                TxtSerialNumber.Clear();
+                ScanMode = true;
+                CurrentComponentNumber++;
+                LblComponent.Text = $"Componente #{CurrentComponentNumber}";
+                ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green); 
+            }
+        }
 
-            TxtSerialNumber.Clear();
-            ScanMode = true;
-            CurrentComponentNumber++;
-            LblComponent.Text = $"Componente #{CurrentComponentNumber}";
-            ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green);
+        private bool GetAndValidateSerialNumber()
+        {
+            SerialNumberRepository repo = new SerialNumberRepository();
+
+            var serialNumber = repo.GetSerialNumberByNumber(Convert.ToInt32(TxtSerialNumber.Text));
+
+            if (serialNumber == null)
+            {
+                ChangeTextMainGuide("Este numero serial existe", Color.Red);
+                return false;
+            }
+
+            if (serialNumber.PieceId != CurrentPieceId)
+            {
+                ChangeTextMainGuide("Este numero serial no pertenece a esta pieza", Color.Red);
+                return false;
+            }
+
+            //Logica de dias habiles
+            if (!DaysEnableValidator((int)serialNumber.DaysEnable,(DateTime)serialNumber.CreatedDate))
+            {
+                ChangeTextMainGuide($"El numero serial [{serialNumber.SerialNumber1}] no esta habilitado", Color.Red);
+                return false;
+            }
+
+            return true;
         }
 
         private void ValidateInfoForFinishGood()
@@ -140,6 +179,22 @@ namespace Traceability_System.Forms
             else
             {
                 ChangeTextMainGuide($"El codigo {TxtFinishGood.Text} no existe", Color.Red);
+            }
+        }
+
+        private bool DaysEnableValidator(int Days, DateTime CreatedDate)
+        {
+            DateTime Today = DateTime.Now;
+            DateTime ExpirationDate = CreatedDate.AddDays(Days);
+
+            if (Today >= ExpirationDate)
+            {
+                //El codigo serial vencio
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 

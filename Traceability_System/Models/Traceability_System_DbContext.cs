@@ -20,13 +20,13 @@ namespace Traceability_System.Models
         public virtual DbSet<Configuration> Configurations { get; set; }
         public virtual DbSet<LogRecord> LogRecords { get; set; }
         public virtual DbSet<Piece> Pieces { get; set; }
+        public virtual DbSet<SerialNumber> SerialNumbers { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=DESKTOP-8C1AB2N;Database=Traceability_System_Db;Trusted_Connection=True;");
             }
         }
@@ -82,6 +82,27 @@ namespace Traceability_System.Models
                     .WithMany(p => p.Pieces)
                     .HasForeignKey(d => d.UserScanned)
                     .HasConstraintName("FK_Pieces_User");
+            });
+
+            modelBuilder.Entity<SerialNumber>(entity =>
+            {
+                entity.HasKey(e => e.SerialNumber1);
+
+                entity.Property(e => e.SerialNumber1)
+                    .ValueGeneratedNever()
+                    .HasColumnName("SerialNumber");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("date");
+
+                entity.HasOne(d => d.Piece)
+                    .WithMany(p => p.SerialNumbers)
+                    .HasForeignKey(d => d.PieceId)
+                    .HasConstraintName("FK_SerialNumbers_Pieces");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.SerialNumbers)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_SerialNumbers_User");
             });
 
             modelBuilder.Entity<User>(entity =>

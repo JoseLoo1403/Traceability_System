@@ -10,6 +10,7 @@ namespace Traceability_System.Models
         public Piece()
         {
             LogRecords = new HashSet<LogRecord>();
+            SerialNumbers = new HashSet<SerialNumber>();
         }
 
         public int Id { get; set; }
@@ -26,5 +27,6 @@ namespace Traceability_System.Models
 
         public virtual User UserScannedNavigation { get; set; }
         public virtual ICollection<LogRecord> LogRecords { get; set; }
+        public virtual ICollection<SerialNumber> SerialNumbers { get; set; }
     }
 }

@@ -178,7 +178,7 @@ namespace Traceability_System.Forms
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(224, 638);
+            this.label8.Location = new System.Drawing.Point(224, 593);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(152, 25);
             this.label8.TabIndex = 19;
@@ -188,7 +188,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtDeletePartNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtDeletePartNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDeletePartNumber.Location = new System.Drawing.Point(382, 635);
+            this.TxtDeletePartNumber.Location = new System.Drawing.Point(382, 590);
             this.TxtDeletePartNumber.Name = "TxtDeletePartNumber";
             this.TxtDeletePartNumber.Size = new System.Drawing.Size(197, 31);
             this.TxtDeletePartNumber.TabIndex = 18;
@@ -208,7 +208,7 @@ namespace Traceability_System.Forms
             this.BtnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnDelete.BackColor = System.Drawing.Color.Tomato;
             this.BtnDelete.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnDelete.Location = new System.Drawing.Point(709, 608);
+            this.BtnDelete.Location = new System.Drawing.Point(709, 563);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(250, 85);
             this.BtnDelete.TabIndex = 21;
