@@ -25,13 +25,12 @@ namespace Traceability_System.Repositories
             return Context.Users.ToList();
         }
 
-        public void RegisterUserLog(int userCode)
+        public void RegisterUserLog(int userCode, DateTime lastLog)
         {
             var LoggedUser = Context.Users.FirstOrDefault(x => x.UserCode == userCode);
 
             //Cleaning miliseconds
             DateTime LastLog = DateTime.Now;
-            LastLog = new DateTime(LastLog.Ticks - (LastLog.Ticks % TimeSpan.TicksPerSecond), LastLog.Kind);
             LoggedUser.LastLogin = LastLog;
             Context.SaveChanges();
         }

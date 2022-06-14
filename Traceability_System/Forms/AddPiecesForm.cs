@@ -28,9 +28,6 @@ namespace Traceability_System.Forms
         {
             PiecesRepository repository = new PiecesRepository();
 
-            DateTime date = DateTime.Now;
-            date = new DateTime(date.Ticks - (date.Ticks % TimeSpan.TicksPerSecond), date.Kind);
-
             try
             {
                 Piece PieceAdder = new Piece()
@@ -42,7 +39,7 @@ namespace Traceability_System.Forms
                     FinishedGood = TxtFinishGood.Enabled == true ? Convert.ToInt32(TxtFinishGood.Text) : null,
                     Active = true,
                     DaysEnable = Convert.ToInt32(TxtDays.Text),
-                    CreatedDate = date
+                    CreatedDate = DateFormatHelper.GetCurrentDate()
                 };
 
                 repository.AddPiece(PieceAdder);
@@ -139,6 +136,11 @@ namespace Traceability_System.Forms
         private void BtnViewPieces_Click(object sender, EventArgs e)
         {
             ContextInfo.OpenNewFormEvent(new PiecesTableView());
+        }
+
+        private void BtnSerialNumbersView_Click(object sender, EventArgs e)
+        {
+            ContextInfo.OpenNewFormEvent(new AddSerialNumberForm(ContextInfo));
         }
     }
 }

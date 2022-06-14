@@ -68,7 +68,7 @@ namespace Traceability_System.Forms
             {
                 case "login":
                     contextInfo.UserLoginEvent(user); //User succesfully logged
-                    userRepository.RegisterUserLog(user.UserCode); //Registering last login
+                    userRepository.RegisterUserLog(user.UserCode, DateFormatHelper.GetCurrentDate()); //Registering last login
                     break;
                 case "authorization":
 

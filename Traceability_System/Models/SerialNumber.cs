@@ -11,6 +11,7 @@ namespace Traceability_System.Models
         public int? DaysEnable { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? PieceId { get; set; }
+        public bool? Active { get; set; }
         public int? UserId { get; set; }
 
         public virtual Piece Piece { get; set; }

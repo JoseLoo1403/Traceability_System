@@ -16,14 +16,16 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
     public partial class ScannedPiecesEndForm : UserControl
     {
         List<Piece> ScannedPieces;
+        List<int> SerialNumbers;
         GlobalContextInfo ContextInfo;
         int Gen;
-        public ScannedPiecesEndForm(List<Piece> pieces, GlobalContextInfo info, int generation)
+        public ScannedPiecesEndForm(List<Piece> pieces, GlobalContextInfo info, int generation, List<int> serialNumbers)
         {
             InitializeComponent();
             ScannedPieces = pieces;
             ContextInfo = info;
             Gen = generation;
+            SerialNumbers = serialNumbers;
         }
 
         private void ScannedPiecesEndForm_Load(object sender, EventArgs e)
@@ -34,18 +36,24 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void LoadInfoGv()
         {
-            PiecesGv.DataSource = ScannedPieces;
+            PiecesGv.DataSource = FormatInformation();
             if (Gen == 1)
             {
                 PiecesGv.Columns["FinishedGood"].Visible = false;
             }
-            PiecesGv.Columns["Active"].Visible = false;
-            PiecesGv.Columns["DaysEnable"].Visible = false;
-            PiecesGv.Columns["CreatedDate"].Visible = false;
-            PiecesGv.Columns["UserScanned"].Visible = false;
-            PiecesGv.Columns["ScannedDate"].Visible = false;
-            PiecesGv.Columns["UserScannedNavigation"].Visible = false;
-            PiecesGv.Columns["LogRecords"].Visible = false;
+        }
+
+        public List<EndScannedModel> FormatInformation()
+        {
+            List<EndScannedModel> result = new List<EndScannedModel>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                EndScannedModel adder = new EndScannedModel(ScannedPieces[i],SerialNumbers[i]);
+                result.Add(adder);
+            }
+
+            return result;
         }
 
         private void BtnContinue_Click(object sender, EventArgs e)

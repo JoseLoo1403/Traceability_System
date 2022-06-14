@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Traceability_System.Models;
+using Traceability_System.Helpers;
 
 namespace Traceability_System.Repositories
 {
@@ -21,6 +22,11 @@ namespace Traceability_System.Repositories
             return context.Pieces.FirstOrDefault(x => x.PiecePartNumber == partNumber);
         }
 
+        public Piece GetPieceByPartNumberAndFinishedGood(string partNumber, int finishedGood)
+        {
+            return context.Pieces.FirstOrDefault(x => x.PiecePartNumber == partNumber && x.FinishedGood == finishedGood);
+        }
+
         public List<Piece> GetAllPieces()
         {
             return context.Pieces.ToList();
@@ -28,17 +34,21 @@ namespace Traceability_System.Repositories
 
         public void UpdateScannedPieces(List<Piece> pieces, int userCode)
         {
-            DateTime date = DateTime.Now;
-            date = new DateTime(date.Ticks - (date.Ticks % TimeSpan.TicksPerSecond), date.Kind);
-
             foreach (var piece in pieces)
             {
                 var result = context.Pieces.FirstOrDefault(x => x.Id == piece.Id);
                 result.Active = false;
                 result.UserScanned = userCode;
-                result.ScannedDate = date;
+                result.ScannedDate = DateFormatHelper.GetCurrentDate();
                 context.SaveChanges();
             }
+        }
+
+        public void UpdatePieceActive(int pieceId)
+        {
+            var piece = context.Pieces.FirstOrDefault(x => x.Id == pieceId);
+            piece.Active = false;
+            context.SaveChanges();
         }
 
         public bool FinishGoodExist(int? code)

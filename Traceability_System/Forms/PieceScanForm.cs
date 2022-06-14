@@ -48,7 +48,7 @@ namespace Traceability_System.Forms
                 //Process finish 
                 TimerScan.Stop();
                 UpdatePiecesState();
-                ContextInfo.OpenNewFormEvent(new ScannedPiecesEndForm(ScannedPieces, ContextInfo, CurrentGeneration));
+                ContextInfo.OpenNewFormEvent(new ScannedPiecesEndForm(ScannedPieces, ContextInfo, CurrentGeneration,SerialNumbers));
                 return;
             }
 
@@ -57,13 +57,22 @@ namespace Traceability_System.Forms
                 return;
             }
 
-            var Piece = repository.GetPieceByPartNumber(TxtPartNumber.Text);
+            var Piece = CurrentGeneration == 1 ? 
+                repository.GetPieceByPartNumber(TxtPartNumber.Text) : 
+                repository.GetPieceByPartNumberAndFinishedGood(TxtPartNumber.Text,FinishGood);
 
             if (Piece == null)
             {
                 //Piece not found in database
-                ChangeTextMainGuide("No se encontro ninguna pieza con ese codigo", Color.Red);
-                return; 
+                if (CurrentGeneration == 1)
+                {
+                    ChangeTextMainGuide("No se encontro ninguna pieza con ese codigo", Color.Red);
+                }
+                else
+                {
+                    ChangeTextMainGuide($"Codigo [{FinishGood}] no contiene ninguna pieza con ese codigo", Color.Red);
+                }
+                return;
             }
             else
             {
@@ -71,7 +80,6 @@ namespace Traceability_System.Forms
                 ValidateScannedPiece(Piece);
                 return;
             }
-
         }
 
         private void ValidateScannedPiece(Piece piece)
@@ -83,26 +91,20 @@ namespace Traceability_System.Forms
                 return;
             }
 
-            if (CurrentGeneration == 2)
+            //Validate days
+            if (!DaysEnableValidator((int)piece.DaysEnable,(DateTime)piece.CreatedDate))
             {
-                if (piece.FinishedGood != FinishGood)
+                ChangeTextMainGuide("Esta pieza a expirado", Color.Red);
+                if (piece.Active == true)
                 {
-                    //Different finish good detected
-                    ChangeTextMainGuide("Esta pieza no pertenece a este conjunto", Color.Red);
-                    return;
+                    repository.UpdatePieceActive(piece.Id);
                 }
+                return;
             }
 
             if (piece.Active == false)
             {
                 ChangeTextMainGuide("Esta pieza ya ha sido escaneada", Color.Red);
-                return;
-            }
-
-            //Validate days
-            if (!DaysEnableValidator((int)piece.DaysEnable,(DateTime)piece.CreatedDate))
-            {
-                ChangeTextMainGuide("Esta pieza a expirado", Color.Red);
                 return;
             }
 
@@ -155,7 +157,17 @@ namespace Traceability_System.Forms
             //Logica de dias habiles
             if (!DaysEnableValidator((int)serialNumber.DaysEnable,(DateTime)serialNumber.CreatedDate))
             {
-                ChangeTextMainGuide($"El numero serial [{serialNumber.SerialNumber1}] no esta habilitado", Color.Red);
+                ChangeTextMainGuide($"El numero serial [{serialNumber.SerialNumber1}] ha expirado", Color.Red);
+                if (serialNumber.Active == true)
+                {
+                    repo.ChangeStateBySerialNumber(serialNumber.SerialNumber1, false);
+                }
+                return false;
+            }
+
+            if (serialNumber.Active == false)
+            {
+                ChangeTextMainGuide($"El numero serial esta deshabiliado", Color.Red);
                 return false;
             }
 
@@ -243,6 +255,7 @@ namespace Traceability_System.Forms
             else
             {
                 ValidateInfoForSerialNumber();
+                TxtSerialNumber.Clear();
                 TxtSerialNumber.Focus();
             }
         }

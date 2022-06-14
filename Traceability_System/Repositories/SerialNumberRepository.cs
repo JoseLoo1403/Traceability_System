@@ -20,5 +20,18 @@ namespace Traceability_System.Repositories
         {
             return Context.SerialNumbers.FirstOrDefault(x => x.SerialNumber1 == serialNumber);
         }
+
+        public void AddSerialNumber(SerialNumber serialNumber)
+        {
+            Context.SerialNumbers.Add(serialNumber);
+            Context.SaveChanges();
+        }
+
+        public void ChangeStateBySerialNumber(int serialNumber, bool state)
+        {
+            var result = Context.SerialNumbers.FirstOrDefault(x => x.SerialNumber1 == serialNumber);
+            result.Active = state;
+            Context.SaveChanges();
+        }
     }
 }

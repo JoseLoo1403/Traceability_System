@@ -46,6 +46,7 @@ namespace Traceability_System.Forms
             this.BtnDelete = new System.Windows.Forms.Button();
             this.TxtDays = new System.Windows.Forms.NumericUpDown();
             this.TxtName = new System.Windows.Forms.ComboBox();
+            this.BtnSerialNumbersView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDays)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +133,7 @@ namespace Traceability_System.Forms
             this.BtnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnAdd.BackColor = System.Drawing.Color.LightGreen;
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAdd.Location = new System.Drawing.Point(709, 190);
+            this.BtnAdd.Location = new System.Drawing.Point(709, 106);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(250, 85);
             this.BtnAdd.TabIndex = 14;
@@ -144,7 +145,7 @@ namespace Traceability_System.Forms
             // 
             this.BtnViewPieces.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnViewPieces.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnViewPieces.Location = new System.Drawing.Point(709, 347);
+            this.BtnViewPieces.Location = new System.Drawing.Point(709, 233);
             this.BtnViewPieces.Name = "BtnViewPieces";
             this.BtnViewPieces.Size = new System.Drawing.Size(250, 85);
             this.BtnViewPieces.TabIndex = 15;
@@ -239,11 +240,24 @@ namespace Traceability_System.Forms
             this.TxtName.Size = new System.Drawing.Size(151, 33);
             this.TxtName.TabIndex = 23;
             // 
+            // BtnSerialNumbersView
+            // 
+            this.BtnSerialNumbersView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnSerialNumbersView.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnSerialNumbersView.Location = new System.Drawing.Point(709, 353);
+            this.BtnSerialNumbersView.Name = "BtnSerialNumbersView";
+            this.BtnSerialNumbersView.Size = new System.Drawing.Size(250, 85);
+            this.BtnSerialNumbersView.TabIndex = 24;
+            this.BtnSerialNumbersView.Text = "Numeros Seriales";
+            this.BtnSerialNumbersView.UseVisualStyleBackColor = true;
+            this.BtnSerialNumbersView.Click += new System.EventHandler(this.BtnSerialNumbersView_Click);
+            // 
             // AddPiecesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.BtnSerialNumbersView);
             this.Controls.Add(this.TxtName);
             this.Controls.Add(this.TxtDays);
             this.Controls.Add(this.BtnDelete);
@@ -287,5 +301,6 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.NumericUpDown TxtDays;
         private System.Windows.Forms.ComboBox TxtName;
+        private System.Windows.Forms.Button BtnSerialNumbersView;
     }
 }
