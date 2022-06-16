@@ -21,6 +21,7 @@ namespace Traceability_System.Models
         public virtual DbSet<LogRecord> LogRecords { get; set; }
         public virtual DbSet<Piece> Pieces { get; set; }
         public virtual DbSet<SerialNumber> SerialNumbers { get; set; }
+        public virtual DbSet<Shift> Shifts { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -105,6 +106,20 @@ namespace Traceability_System.Models
                     .HasConstraintName("FK_SerialNumbers_User");
             });
 
+            modelBuilder.Entity<Shift>(entity =>
+            {
+                entity.HasKey(e => e.Shift1);
+
+                entity.Property(e => e.Shift1)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("Shift");
+
+                entity.Property(e => e.HourEnd).HasColumnName("Hour_End");
+
+                entity.Property(e => e.HourStart).HasColumnName("Hour_Start");
+            });
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserCode);
@@ -133,6 +148,11 @@ namespace Traceability_System.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.ShiftNavigation)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.Shift)
+                    .HasConstraintName("FK_User_Shifts");
             });
 
             OnModelCreatingPartial(modelBuilder);

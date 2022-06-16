@@ -22,6 +22,7 @@ namespace Traceability_System.Models
         public bool Active { get; set; }
         public DateTime? LastLogin { get; set; }
 
+        public virtual Shift ShiftNavigation { get; set; }
         public virtual ICollection<LogRecord> LogRecords { get; set; }
         public virtual ICollection<Piece> Pieces { get; set; }
         public virtual ICollection<SerialNumber> SerialNumbers { get; set; }

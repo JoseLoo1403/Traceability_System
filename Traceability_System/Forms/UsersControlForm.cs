@@ -23,6 +23,14 @@ namespace Traceability_System.Forms
         {
             InitializeComponent();
             ContextInfo = info;
+            LoadShifts();
+        }
+
+        private void LoadShifts()
+        {
+            ShiftsRepository repository = new ShiftsRepository();
+
+            TxtShift.DataSource = repository.GetAllShifts().AsEnumerable().Select(x => x.Shift1).ToList();
         }
 
         private void BtnSaveUser_Click(object sender, EventArgs e)
@@ -77,7 +85,7 @@ namespace Traceability_System.Forms
             TxtSurname.Clear();
             TxtUserCode.Clear();
             TxtPosition.Clear();
-            TxtShift.Clear();
+            TxtShift.Text = "";
         }
 
         private void BtnSearchActiveUser_Click(object sender, EventArgs e)

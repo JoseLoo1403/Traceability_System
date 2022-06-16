@@ -48,7 +48,7 @@ namespace Traceability_System.Forms
             this.BtnSearchActiveUser = new System.Windows.Forms.Button();
             this.LblActivationGuide = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.TxtShift = new System.Windows.Forms.TextBox();
+            this.TxtShift = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // TxtName
@@ -134,8 +134,8 @@ namespace Traceability_System.Forms
             // BtnSaveUser
             // 
             this.BtnSaveUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnSaveUser.BackColor = System.Drawing.Color.Transparent;
-            this.BtnSaveUser.Location = new System.Drawing.Point(533, 249);
+            this.BtnSaveUser.BackColor = System.Drawing.Color.LightGreen;
+            this.BtnSaveUser.Location = new System.Drawing.Point(491, 249);
             this.BtnSaveUser.Name = "BtnSaveUser";
             this.BtnSaveUser.Size = new System.Drawing.Size(230, 63);
             this.BtnSaveUser.TabIndex = 8;
@@ -147,7 +147,7 @@ namespace Traceability_System.Forms
             // 
             this.BtnViewUserTable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnViewUserTable.BackColor = System.Drawing.Color.Transparent;
-            this.BtnViewUserTable.Location = new System.Drawing.Point(533, 400);
+            this.BtnViewUserTable.Location = new System.Drawing.Point(491, 400);
             this.BtnViewUserTable.Name = "BtnViewUserTable";
             this.BtnViewUserTable.Size = new System.Drawing.Size(230, 65);
             this.BtnViewUserTable.TabIndex = 9;
@@ -162,9 +162,9 @@ namespace Traceability_System.Forms
             this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(103, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(358, 31);
+            this.label5.Size = new System.Drawing.Size(181, 31);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Ingreso de Usuario ( Operadores )";
+            this.label5.Text = "Ingresar Usuario";
             // 
             // LblSaveGuide
             // 
@@ -183,15 +183,15 @@ namespace Traceability_System.Forms
             this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(115, 593);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(358, 31);
+            this.label6.Size = new System.Drawing.Size(221, 31);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Ingreso de Usuario ( Operadores )";
+            this.label6.Text = "Deshabilitar Usuario";
             // 
             // TxtActiveUserCode
             // 
             this.TxtActiveUserCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtActiveUserCode.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtActiveUserCode.Location = new System.Drawing.Point(125, 711);
+            this.TxtActiveUserCode.Location = new System.Drawing.Point(115, 711);
             this.TxtActiveUserCode.Name = "TxtActiveUserCode";
             this.TxtActiveUserCode.Size = new System.Drawing.Size(248, 31);
             this.TxtActiveUserCode.TabIndex = 13;
@@ -201,7 +201,7 @@ namespace Traceability_System.Forms
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(150, 673);
+            this.label7.Location = new System.Drawing.Point(140, 673);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(159, 25);
             this.label7.TabIndex = 14;
@@ -210,8 +210,8 @@ namespace Traceability_System.Forms
             // BtnChangeActive
             // 
             this.BtnChangeActive.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnChangeActive.BackColor = System.Drawing.Color.Transparent;
-            this.BtnChangeActive.Location = new System.Drawing.Point(509, 697);
+            this.BtnChangeActive.BackColor = System.Drawing.Color.LightCoral;
+            this.BtnChangeActive.Location = new System.Drawing.Point(491, 696);
             this.BtnChangeActive.Name = "BtnChangeActive";
             this.BtnChangeActive.Size = new System.Drawing.Size(230, 63);
             this.BtnChangeActive.TabIndex = 15;
@@ -222,7 +222,7 @@ namespace Traceability_System.Forms
             // BtnSearchActiveUser
             // 
             this.BtnSearchActiveUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnSearchActiveUser.Location = new System.Drawing.Point(379, 713);
+            this.BtnSearchActiveUser.Location = new System.Drawing.Point(369, 713);
             this.BtnSearchActiveUser.Name = "BtnSearchActiveUser";
             this.BtnSearchActiveUser.Size = new System.Drawing.Size(33, 29);
             this.BtnSearchActiveUser.TabIndex = 16;
@@ -254,19 +254,22 @@ namespace Traceability_System.Forms
             // TxtShift
             // 
             this.TxtShift.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TxtShift.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtShift.Location = new System.Drawing.Point(119, 513);
+            this.TxtShift.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.TxtShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TxtShift.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtShift.FormattingEnabled = true;
+            this.TxtShift.Location = new System.Drawing.Point(119, 511);
             this.TxtShift.Name = "TxtShift";
-            this.TxtShift.Size = new System.Drawing.Size(232, 30);
-            this.TxtShift.TabIndex = 18;
+            this.TxtShift.Size = new System.Drawing.Size(232, 33);
+            this.TxtShift.TabIndex = 20;
             // 
             // UsersControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.TxtShift);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.LblActivationGuide);
             this.Controls.Add(this.BtnSearchActiveUser);
             this.Controls.Add(this.BtnChangeActive);
@@ -313,6 +316,6 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.Button BtnSearchActiveUser;
         private System.Windows.Forms.Label LblActivationGuide;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox TxtShift;
+        private System.Windows.Forms.ComboBox TxtShift;
     }
 }

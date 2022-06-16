@@ -12,6 +12,7 @@ using Traceability_System.Models;
 using Traceability_System.Forms;
 using Traceability_System.Forms.PieceScanSelectionViews;
 using Traceability_System.Forms.EntitiesViews;
+using Traceability_System.Repositories;
 
 namespace Traceability_System
 {
@@ -23,6 +24,7 @@ namespace Traceability_System
         }
 
         GlobalContextInfo GlobalContext;
+        Shift CurrentShift;
         private void Main_Load(object sender, EventArgs e)
         {
             GlobalContext = new GlobalContextInfo();
@@ -36,6 +38,7 @@ namespace Traceability_System
             //Initial calls
             LoadForm(new Login(GlobalContext,"login"));
             ButtonsRestrictions();
+            ChangeShiftIfApplies();
         }
 
         private void ButtonsRestrictions()
@@ -107,6 +110,39 @@ namespace Traceability_System
             f.Dock = DockStyle.Fill;
             MainPanel.Controls.Add(f);
             MainPanel.Tag = f;
+        }
+
+        private void ChangeShiftIfApplies()
+        {
+            GetCurrentShift();
+
+            Timer timer = new Timer();
+            timer.Interval = 1000;
+
+            timer.Tick += (s, e) =>
+            {
+                if (CurrentShift.HourEnd < DateTime.Now.TimeOfDay)
+                {
+                    //Shift change
+                    ResetSystem();
+                }
+            };
+            timer.Start();
+        }
+
+        private void GetCurrentShift()
+        {
+            ShiftsRepository repository = new ShiftsRepository();
+            CurrentShift = repository.GetCurrentShift();
+            LblShift.Text = $"Turno actual: {CurrentShift.Shift1}";
+        }
+
+        private void ResetSystem()
+        {
+            GlobalContext.CurrentUser = null;
+            GetCurrentShift();
+            LoadForm(new Login(GlobalContext, "ShiftChange"));
+            ButtonsRestrictions();
         }
 
         private void Logout()

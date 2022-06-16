@@ -30,6 +30,7 @@ namespace Traceability_System
         private void InitializeComponent()
         {
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.BtnPieces = new System.Windows.Forms.Button();
             this.BtnLogout = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
             this.LblUser = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@ namespace Traceability_System
             this.BtnUsers = new System.Windows.Forms.Button();
             this.BtnScanPiece = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.BtnPieces = new System.Windows.Forms.Button();
+            this.LblShift = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@ namespace Traceability_System
             this.TopPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.TopPanel.BackgroundImage = global::Traceability_System.Properties.Resources.DegradadoTraza;
             this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TopPanel.Controls.Add(this.LblShift);
             this.TopPanel.Controls.Add(this.BtnPieces);
             this.TopPanel.Controls.Add(this.BtnLogout);
             this.TopPanel.Controls.Add(this.BtnClose);
@@ -60,6 +62,22 @@ namespace Traceability_System
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(1164, 113);
             this.TopPanel.TabIndex = 0;
+            // 
+            // BtnPieces
+            // 
+            this.BtnPieces.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnPieces.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPieces.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnPieces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPieces.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnPieces.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnPieces.Location = new System.Drawing.Point(659, 60);
+            this.BtnPieces.Name = "BtnPieces";
+            this.BtnPieces.Size = new System.Drawing.Size(188, 47);
+            this.BtnPieces.TabIndex = 7;
+            this.BtnPieces.Text = "Piezas";
+            this.BtnPieces.UseVisualStyleBackColor = false;
+            this.BtnPieces.Click += new System.EventHandler(this.BtnPieces_Click);
             // 
             // BtnLogout
             // 
@@ -172,21 +190,17 @@ namespace Traceability_System
             this.MainPanel.Size = new System.Drawing.Size(1164, 582);
             this.MainPanel.TabIndex = 1;
             // 
-            // BtnPieces
+            // LblShift
             // 
-            this.BtnPieces.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnPieces.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPieces.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnPieces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnPieces.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnPieces.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnPieces.Location = new System.Drawing.Point(659, 60);
-            this.BtnPieces.Name = "BtnPieces";
-            this.BtnPieces.Size = new System.Drawing.Size(188, 47);
-            this.BtnPieces.TabIndex = 7;
-            this.BtnPieces.Text = "Piezas";
-            this.BtnPieces.UseVisualStyleBackColor = false;
-            this.BtnPieces.Click += new System.EventHandler(this.BtnPieces_Click);
+            this.LblShift.AutoSize = true;
+            this.LblShift.BackColor = System.Drawing.Color.Transparent;
+            this.LblShift.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblShift.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LblShift.Location = new System.Drawing.Point(242, 9);
+            this.LblShift.Name = "LblShift";
+            this.LblShift.Size = new System.Drawing.Size(136, 28);
+            this.LblShift.TabIndex = 8;
+            this.LblShift.Text = "Turno actual:";
             // 
             // Main
             // 
@@ -219,6 +233,7 @@ namespace Traceability_System
         private System.Windows.Forms.Button BtnClose;
         private System.Windows.Forms.Button BtnLogout;
         private System.Windows.Forms.Button BtnPieces;
+        private System.Windows.Forms.Label LblShift;
     }
 }
 
