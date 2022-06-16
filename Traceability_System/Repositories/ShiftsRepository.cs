@@ -25,5 +25,28 @@ namespace Traceability_System.Repositories
         {
             return context.Shifts.FirstOrDefault(x => x.HourStart < DateTime.Now.TimeOfDay && x.HourEnd > DateTime.Now.TimeOfDay);
         }
+
+        public void AddNewShift(Shift shift)
+        {
+            context.Shifts.Add(shift);
+            context.SaveChanges();
+        }
+
+        public Shift GetShiftByName(string name)
+        {
+            return context.Shifts.FirstOrDefault(x => x.Shift1 == name);
+        }
+
+        public void UpdateShift(Shift shift)
+        {
+            var result = context.Shifts.FirstOrDefault(x => x.Shift1 == shift.Shift1);
+
+            if (result == null) return;
+
+            result.HourStart = shift.HourStart;
+            result.HourEnd = shift.HourEnd;
+
+            context.SaveChanges();
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Traceability_System.Helpers
         public event EventHandler UserLogoutEventHandler;
         public event EventHandler<UserControl> OpenNewFormEventHandler;
         public event EventHandler<string> AuthorizationRequiredEventHandler;
+        public event EventHandler<Shift> ShiftUpdateEventHandler;
 
         public User CurrentUser { get; set; }
 
@@ -37,6 +38,11 @@ namespace Traceability_System.Helpers
         public void AuthorizationRequiredEvent(string command)
         {
             AuthorizationRequiredEventHandler?.Invoke(this, command);
+        }
+
+        public void ShiftUpdateEvent(Shift shift)
+        {
+            ShiftUpdateEventHandler?.Invoke(this, shift);
         }
     }
 }

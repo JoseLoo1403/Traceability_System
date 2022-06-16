@@ -76,6 +76,11 @@ namespace Traceability_System.Forms
                         return;
                     }
                     break;
+
+                case "ShiftChange":
+                    contextInfo.UserLoginEvent(user); //User succesfully logged
+                    userRepository.RegisterUserLog(user.UserCode, DateFormatHelper.GetCurrentDate()); //Registering last login
+                    break;
             }
 
             ValidatorTm.Enabled = false;

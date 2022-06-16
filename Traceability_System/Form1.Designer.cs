@@ -30,6 +30,7 @@ namespace Traceability_System
         private void InitializeComponent()
         {
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.LblShift = new System.Windows.Forms.Label();
             this.BtnPieces = new System.Windows.Forms.Button();
             this.BtnLogout = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@ namespace Traceability_System
             this.BtnUsers = new System.Windows.Forms.Button();
             this.BtnScanPiece = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.LblShift = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,18 @@ namespace Traceability_System
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(1164, 113);
             this.TopPanel.TabIndex = 0;
+            // 
+            // LblShift
+            // 
+            this.LblShift.AutoSize = true;
+            this.LblShift.BackColor = System.Drawing.Color.Transparent;
+            this.LblShift.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblShift.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LblShift.Location = new System.Drawing.Point(242, 9);
+            this.LblShift.Name = "LblShift";
+            this.LblShift.Size = new System.Drawing.Size(136, 28);
+            this.LblShift.TabIndex = 8;
+            this.LblShift.Text = "Turno actual:";
             // 
             // BtnPieces
             // 
@@ -135,6 +147,7 @@ namespace Traceability_System
             this.BtnConfiguration.TabIndex = 3;
             this.BtnConfiguration.Text = "Configuraciones";
             this.BtnConfiguration.UseVisualStyleBackColor = false;
+            this.BtnConfiguration.Click += new System.EventHandler(this.BtnConfiguration_Click);
             // 
             // BtnLogRecords
             // 
@@ -189,18 +202,6 @@ namespace Traceability_System
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1164, 582);
             this.MainPanel.TabIndex = 1;
-            // 
-            // LblShift
-            // 
-            this.LblShift.AutoSize = true;
-            this.LblShift.BackColor = System.Drawing.Color.Transparent;
-            this.LblShift.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblShift.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LblShift.Location = new System.Drawing.Point(242, 9);
-            this.LblShift.Name = "LblShift";
-            this.LblShift.Size = new System.Drawing.Size(136, 28);
-            this.LblShift.TabIndex = 8;
-            this.LblShift.Text = "Turno actual:";
             // 
             // Main
             // 

@@ -34,11 +34,12 @@ namespace Traceability_System
             GlobalContext.OpenNewFormEventHandler += OpenTabEvent;
             GlobalContext.UserLogoutEventHandler += UserLogoutEvent;
             GlobalContext.AuthorizationRequiredEventHandler += AuthorizationLogin;
+            GlobalContext.ShiftUpdateEventHandler += ShiftUpdatedEvent;
 
             //Initial calls
             LoadForm(new Login(GlobalContext,"login"));
             ButtonsRestrictions();
-            ChangeShiftIfApplies();
+            StartShiftValidation();
         }
 
         private void ButtonsRestrictions()
@@ -102,6 +103,11 @@ namespace Traceability_System
             }
         }
 
+        private void ShiftUpdatedEvent(object sender, Shift e)
+        {
+            GetCurrentShift();
+        }
+
         private void LoadForm(object form)
         {
             if (MainPanel.Controls.Count > 0)
@@ -112,7 +118,7 @@ namespace Traceability_System
             MainPanel.Tag = f;
         }
 
-        private void ChangeShiftIfApplies()
+        private void StartShiftValidation()
         {
             GetCurrentShift();
 
@@ -134,6 +140,17 @@ namespace Traceability_System
         {
             ShiftsRepository repository = new ShiftsRepository();
             CurrentShift = repository.GetCurrentShift();
+
+            if (CurrentShift == null)
+            {
+                CurrentShift = new Shift()
+                {
+                    Shift1 = "Default",
+                    HourStart = new TimeSpan(0, 1, 0, 0),
+                    HourEnd = new TimeSpan(0, 23, 59, 0)
+                };
+            }
+
             LblShift.Text = $"Turno actual: {CurrentShift.Shift1}";
         }
 
@@ -187,6 +204,11 @@ namespace Traceability_System
         private void BtnPieces_Click(object sender, EventArgs e)
         {
             LoadForm(new AddPiecesForm(GlobalContext));
+        }
+
+        private void BtnConfiguration_Click(object sender, EventArgs e)
+        {
+            LoadForm(new ConfigurationsForm(GlobalContext));
         }
     }
 }

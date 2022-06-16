@@ -210,7 +210,7 @@ namespace Traceability_System.Forms
             // BtnChangeActive
             // 
             this.BtnChangeActive.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnChangeActive.BackColor = System.Drawing.Color.LightCoral;
+            this.BtnChangeActive.BackColor = System.Drawing.Color.Tomato;
             this.BtnChangeActive.Location = new System.Drawing.Point(491, 696);
             this.BtnChangeActive.Name = "BtnChangeActive";
             this.BtnChangeActive.Size = new System.Drawing.Size(230, 63);
