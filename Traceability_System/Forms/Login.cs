@@ -44,7 +44,7 @@ namespace Traceability_System.Forms
 
             if (UserRespond == null)
             {
-                ChangeTextMainGuide($"El usario con codigo [ {text} ] no existe", Color.Red);
+                ChangeTextMainGuide($"El usuario con codigo [ {text} ] no existe", Color.Red);
                 return;
             }
 
@@ -91,10 +91,12 @@ namespace Traceability_System.Forms
             switch (Mode)
             {
                 case "authorization":
-                    ChangeTextMainGuide("La pieza que escaneo no pertenece a la generacion seleccionada, porfavor contacte un supervisor", Color.Red);
+                    LblAuthorizationTitle.Text = "La pieza que escaneo no pertenece a la generacion seleccionada, porfavor contacte un supervisor";
+                    LblAuthorizationTitle.ForeColor = Color.Red;
                     break;
                 case "ShiftChange":
-                    ChangeTextMainGuide("Cambio de turno", Color.Green);
+                    LblAuthorizationTitle.Text = "Cambio de turno";
+                    LblAuthorizationTitle.ForeColor = Color.Green;
                     break;
             }
         }

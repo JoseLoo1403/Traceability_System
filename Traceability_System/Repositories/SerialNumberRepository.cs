@@ -33,5 +33,20 @@ namespace Traceability_System.Repositories
             result.Active = state;
             Context.SaveChanges();
         }
+
+        public void ActiveSerialForOneDay(SerialNumber serial)
+        {
+            var result = Context.SerialNumbers.FirstOrDefault(x => x.SerialNumber1 == serial.SerialNumber1);
+
+            DateTime today = DateTime.Now;
+            DateTime created = (DateTime)serial.CreatedDate;
+
+            int Days = Convert.ToInt32((today - created).TotalDays);
+
+            result.DaysEnable = Days + 1;
+            result.Active = true;
+
+            Context.SaveChanges();
+        }
     }
 }

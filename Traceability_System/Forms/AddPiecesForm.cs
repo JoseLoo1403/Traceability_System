@@ -17,7 +17,7 @@ namespace Traceability_System.Forms
     public partial class AddPiecesForm : UserControl
     {
         GlobalContextInfo ContextInfo;
-
+        Piece UpdatePiece;
         public AddPiecesForm(GlobalContextInfo info)
         {
             InitializeComponent();
@@ -141,6 +141,95 @@ namespace Traceability_System.Forms
         private void BtnSerialNumbersView_Click(object sender, EventArgs e)
         {
             ContextInfo.OpenNewFormEvent(new AddSerialNumberForm(ContextInfo));
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            PiecesRepository repository = new PiecesRepository();
+
+            var result = ChkSecondGen.Checked ?
+                repository.GetPieceByPartNumberAndFinishedGood(TxtDeletePartNumber.Text, Convert.ToInt32(TxtUpdateFinishedGood.Text)) :
+                repository.GetPieceByPartNumber(TxtDeletePartNumber.Text);
+
+            if (result == null)
+            {
+                ChangeTextMainGuide("No se encontro ningua pieza", Color.Red);
+                return;
+            }
+
+            UpdatePiece = result;
+
+            if (result.Active == true)
+            {
+                BtnActive.Text = "Deshabilitar";
+            }
+            else
+            {
+                var expire = (DateTime)result.CreatedDate;
+                expire = expire.AddDays((int)result.DaysEnable);
+                if (expire < DateTime.Now)
+                {
+                    BtnActive.Text = "Habilitar por un dia"; 
+                }
+                else
+                {
+                    BtnActive.Text = "Habilitar";
+                }
+            }
+        }
+
+        private void ChkSecondGen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkSecondGen.Checked == true)
+            {
+                TxtUpdateFinishedGood.Enabled = true;
+            }
+            else
+            {
+                TxtUpdateFinishedGood.Enabled = false;
+            }
+        }
+
+        private void ClearUpdateTextBoxes()
+        {
+            TxtDeletePartNumber.Clear();
+            TxtUpdateFinishedGood.Clear();
+        }
+
+        private void BtnActive_Click(object sender, EventArgs e)
+        {
+            PiecesRepository repository = new PiecesRepository();
+
+            if (UpdatePiece == null)
+            {
+                //No se ha buscado pieza
+                ChangeTextMainGuide("No se ha buscado ninguna pieza", Color.Red);
+                return;
+            }
+
+            if (UpdatePiece.Active == true)
+            {
+                repository.UpdatePieceActive(UpdatePiece.Id);
+                ChangeTextMainGuide("Pieza deshabilitada", Color.Green);
+            }
+            else
+            {
+                var expire = (DateTime)UpdatePiece.CreatedDate;
+                expire = expire.AddDays((int)UpdatePiece.DaysEnable);
+
+                if (expire < DateTime.Now)
+                {
+                    repository.ActivePieceForOneDay(UpdatePiece);
+                    ChangeTextMainGuide("Pieza habilitada por un Dia", Color.Green); 
+                }
+                else
+                {
+                    repository.UpdatePieceActive(UpdatePiece.Id);
+                    ChangeTextMainGuide("Pieza habilitada", Color.Green);
+                }
+            }
+
+            ClearUpdateTextBoxes();
         }
     }
 }

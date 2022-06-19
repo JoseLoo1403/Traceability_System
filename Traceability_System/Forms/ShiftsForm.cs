@@ -48,6 +48,7 @@ namespace Traceability_System.Forms
             }
 
             ChangeTextMainGuide("Turno creado existosamente", Color.Green);
+            ContextInfo.ShiftUpdateEvent(UpdateShift);
             ClearTextBoxesForAdd();
         }
 

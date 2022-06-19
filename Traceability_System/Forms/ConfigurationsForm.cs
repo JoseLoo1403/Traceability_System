@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Traceability_System.Helpers;
+using Traceability_System.Modbus;
 
 namespace Traceability_System.Forms
 {
@@ -24,6 +25,16 @@ namespace Traceability_System.Forms
         private void BtnShifts_Click(object sender, EventArgs e)
         {
             ContextInfo.OpenNewFormEvent(new ShiftsForm(ContextInfo));
+        }
+
+        private void BtnVerify_Click(object sender, EventArgs e)
+        {
+            ModbusMasterConnector c = new ModbusMasterConnector();
+
+            var ipFormat = Encoding.ASCII.GetBytes(TxtIp.Text);
+            c.StartConnection(TxtIp.Text, Convert.ToInt32(TxtPort.Text));
+
+            c.WriteRegister(1);
         }
     }
 }

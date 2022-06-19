@@ -47,7 +47,31 @@ namespace Traceability_System.Repositories
         public void UpdatePieceActive(int pieceId)
         {
             var piece = context.Pieces.FirstOrDefault(x => x.Id == pieceId);
-            piece.Active = false;
+
+            if (piece.Active == true)
+            {
+                piece.Active = false; 
+            }
+            else
+            {
+                piece.Active = true;
+            }
+
+            context.SaveChanges();
+        }
+
+        public void ActivePieceForOneDay(Piece piece)
+        {
+            var result = context.Pieces.FirstOrDefault(x => x.PiecePartNumber == piece.PiecePartNumber && x.FinishedGood == piece.FinishedGood);
+
+            DateTime today = DateTime.Now;
+            DateTime created = (DateTime)piece.CreatedDate;
+
+            int Days = Convert.ToInt32((today - created).TotalDays);
+
+            result.DaysEnable = Days + 1;
+            result.Active = true;
+
             context.SaveChanges();
         }
 

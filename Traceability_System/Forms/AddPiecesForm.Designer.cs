@@ -47,6 +47,12 @@ namespace Traceability_System.Forms
             this.TxtDays = new System.Windows.Forms.NumericUpDown();
             this.TxtName = new System.Windows.Forms.ComboBox();
             this.BtnSerialNumbersView = new System.Windows.Forms.Button();
+            this.BtnSearch = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BtnActive = new System.Windows.Forms.Button();
+            this.ChkSecondGen = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.TxtUpdateFinishedGood = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDays)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +61,7 @@ namespace Traceability_System.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(294, 127);
+            this.label1.Location = new System.Drawing.Point(313, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 25);
             this.label1.TabIndex = 1;
@@ -66,7 +72,7 @@ namespace Traceability_System.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(224, 217);
+            this.label2.Location = new System.Drawing.Point(243, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 25);
             this.label2.TabIndex = 3;
@@ -77,7 +83,7 @@ namespace Traceability_System.Forms
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(266, 435);
+            this.label4.Location = new System.Drawing.Point(285, 445);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 25);
             this.label4.TabIndex = 9;
@@ -88,7 +94,7 @@ namespace Traceability_System.Forms
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(272, 293);
+            this.label5.Location = new System.Drawing.Point(291, 303);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 25);
             this.label5.TabIndex = 7;
@@ -103,7 +109,7 @@ namespace Traceability_System.Forms
             this.TxtGeneration.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.TxtGeneration.Location = new System.Drawing.Point(389, 290);
+            this.TxtGeneration.Location = new System.Drawing.Point(408, 300);
             this.TxtGeneration.Name = "TxtGeneration";
             this.TxtGeneration.Size = new System.Drawing.Size(70, 33);
             this.TxtGeneration.TabIndex = 10;
@@ -113,7 +119,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtPartNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtPartNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPartNumber.Location = new System.Drawing.Point(389, 217);
+            this.TxtPartNumber.Location = new System.Drawing.Point(408, 227);
             this.TxtPartNumber.Name = "TxtPartNumber";
             this.TxtPartNumber.Size = new System.Drawing.Size(197, 31);
             this.TxtPartNumber.TabIndex = 2;
@@ -123,7 +129,7 @@ namespace Traceability_System.Forms
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(482, 21);
+            this.label6.Location = new System.Drawing.Point(501, 31);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(162, 31);
             this.label6.TabIndex = 13;
@@ -134,7 +140,7 @@ namespace Traceability_System.Forms
             this.BtnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnAdd.BackColor = System.Drawing.Color.LightGreen;
             this.BtnAdd.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAdd.Location = new System.Drawing.Point(709, 106);
+            this.BtnAdd.Location = new System.Drawing.Point(728, 116);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(250, 85);
             this.BtnAdd.TabIndex = 14;
@@ -146,7 +152,7 @@ namespace Traceability_System.Forms
             // 
             this.BtnViewPieces.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnViewPieces.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnViewPieces.Location = new System.Drawing.Point(709, 233);
+            this.BtnViewPieces.Location = new System.Drawing.Point(728, 243);
             this.BtnViewPieces.Name = "BtnViewPieces";
             this.BtnViewPieces.Size = new System.Drawing.Size(250, 85);
             this.BtnViewPieces.TabIndex = 15;
@@ -159,7 +165,7 @@ namespace Traceability_System.Forms
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(265, 370);
+            this.label7.Location = new System.Drawing.Point(284, 380);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 25);
             this.label7.TabIndex = 17;
@@ -170,7 +176,7 @@ namespace Traceability_System.Forms
             this.TxtFinishGood.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtFinishGood.Enabled = false;
             this.TxtFinishGood.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtFinishGood.Location = new System.Drawing.Point(389, 364);
+            this.TxtFinishGood.Location = new System.Drawing.Point(408, 374);
             this.TxtFinishGood.Name = "TxtFinishGood";
             this.TxtFinishGood.Size = new System.Drawing.Size(197, 31);
             this.TxtFinishGood.TabIndex = 16;
@@ -180,7 +186,7 @@ namespace Traceability_System.Forms
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(224, 593);
+            this.label8.Location = new System.Drawing.Point(243, 619);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(152, 25);
             this.label8.TabIndex = 19;
@@ -190,7 +196,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtDeletePartNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtDeletePartNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDeletePartNumber.Location = new System.Drawing.Point(382, 590);
+            this.TxtDeletePartNumber.Location = new System.Drawing.Point(401, 616);
             this.TxtDeletePartNumber.Name = "TxtDeletePartNumber";
             this.TxtDeletePartNumber.Size = new System.Drawing.Size(197, 31);
             this.TxtDeletePartNumber.TabIndex = 18;
@@ -199,7 +205,7 @@ namespace Traceability_System.Forms
             // 
             this.LblMainGuide.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblMainGuide.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblMainGuide.Location = new System.Drawing.Point(238, 763);
+            this.LblMainGuide.Location = new System.Drawing.Point(257, 773);
             this.LblMainGuide.Name = "LblMainGuide";
             this.LblMainGuide.Size = new System.Drawing.Size(736, 25);
             this.LblMainGuide.TabIndex = 20;
@@ -210,7 +216,7 @@ namespace Traceability_System.Forms
             this.BtnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnDelete.BackColor = System.Drawing.Color.Tomato;
             this.BtnDelete.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnDelete.Location = new System.Drawing.Point(709, 563);
+            this.BtnDelete.Location = new System.Drawing.Point(728, 551);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(250, 85);
             this.BtnDelete.TabIndex = 21;
@@ -222,7 +228,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtDays.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtDays.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDays.Location = new System.Drawing.Point(389, 433);
+            this.TxtDays.Location = new System.Drawing.Point(408, 443);
             this.TxtDays.Name = "TxtDays";
             this.TxtDays.Size = new System.Drawing.Size(70, 31);
             this.TxtDays.TabIndex = 22;
@@ -236,7 +242,7 @@ namespace Traceability_System.Forms
             "Housing",
             "CPA",
             "Cover"});
-            this.TxtName.Location = new System.Drawing.Point(389, 127);
+            this.TxtName.Location = new System.Drawing.Point(408, 137);
             this.TxtName.Name = "TxtName";
             this.TxtName.Size = new System.Drawing.Size(151, 33);
             this.TxtName.TabIndex = 23;
@@ -245,7 +251,7 @@ namespace Traceability_System.Forms
             // 
             this.BtnSerialNumbersView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnSerialNumbersView.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnSerialNumbersView.Location = new System.Drawing.Point(709, 353);
+            this.BtnSerialNumbersView.Location = new System.Drawing.Point(728, 363);
             this.BtnSerialNumbersView.Name = "BtnSerialNumbersView";
             this.BtnSerialNumbersView.Size = new System.Drawing.Size(250, 85);
             this.BtnSerialNumbersView.TabIndex = 24;
@@ -253,11 +259,87 @@ namespace Traceability_System.Forms
             this.BtnSerialNumbersView.UseVisualStyleBackColor = true;
             this.BtnSerialNumbersView.Click += new System.EventHandler(this.BtnSerialNumbersView_Click);
             // 
+            // BtnSearch
+            // 
+            this.BtnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnSearch.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnSearch.Location = new System.Drawing.Point(604, 615);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(31, 32);
+            this.BtnSearch.TabIndex = 25;
+            this.BtnSearch.Text = "B";
+            this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(304, 551);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 31);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Agregar pieza";
+            // 
+            // BtnActive
+            // 
+            this.BtnActive.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnActive.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BtnActive.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnActive.Location = new System.Drawing.Point(728, 673);
+            this.BtnActive.Name = "BtnActive";
+            this.BtnActive.Size = new System.Drawing.Size(250, 85);
+            this.BtnActive.TabIndex = 27;
+            this.BtnActive.Text = "Habilitar / Deshabilitar";
+            this.BtnActive.UseVisualStyleBackColor = false;
+            this.BtnActive.Click += new System.EventHandler(this.BtnActive_Click);
+            // 
+            // ChkSecondGen
+            // 
+            this.ChkSecondGen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ChkSecondGen.AutoSize = true;
+            this.ChkSecondGen.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkSecondGen.Location = new System.Drawing.Point(398, 675);
+            this.ChkSecondGen.Name = "ChkSecondGen";
+            this.ChkSecondGen.Size = new System.Drawing.Size(232, 29);
+            this.ChkSecondGen.TabIndex = 30;
+            this.ChkSecondGen.Text = "¿Es segunda generacion?";
+            this.ChkSecondGen.UseVisualStyleBackColor = true;
+            this.ChkSecondGen.CheckedChanged += new System.EventHandler(this.ChkSecondGen_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(250, 713);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(131, 25);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Finished Good:";
+            // 
+            // TxtUpdateFinishedGood
+            // 
+            this.TxtUpdateFinishedGood.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtUpdateFinishedGood.Enabled = false;
+            this.TxtUpdateFinishedGood.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtUpdateFinishedGood.Location = new System.Drawing.Point(398, 710);
+            this.TxtUpdateFinishedGood.Name = "TxtUpdateFinishedGood";
+            this.TxtUpdateFinishedGood.Size = new System.Drawing.Size(200, 31);
+            this.TxtUpdateFinishedGood.TabIndex = 28;
+            // 
             // AddPiecesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.ChkSecondGen);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.TxtUpdateFinishedGood);
+            this.Controls.Add(this.BtnActive);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.BtnSerialNumbersView);
             this.Controls.Add(this.TxtName);
             this.Controls.Add(this.TxtDays);
@@ -277,7 +359,7 @@ namespace Traceability_System.Forms
             this.Controls.Add(this.TxtPartNumber);
             this.Controls.Add(this.label1);
             this.Name = "AddPiecesForm";
-            this.Size = new System.Drawing.Size(1185, 818);
+            this.Size = new System.Drawing.Size(1223, 839);
             ((System.ComponentModel.ISupportInitialize)(this.TxtDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -303,5 +385,11 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.NumericUpDown TxtDays;
         private System.Windows.Forms.ComboBox TxtName;
         private System.Windows.Forms.Button BtnSerialNumbersView;
+        private System.Windows.Forms.Button BtnSearch;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BtnActive;
+        private System.Windows.Forms.CheckBox ChkSecondGen;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox TxtUpdateFinishedGood;
     }
 }

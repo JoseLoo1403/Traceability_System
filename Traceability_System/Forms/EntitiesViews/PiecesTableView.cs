@@ -32,6 +32,7 @@ namespace Traceability_System.Forms.EntitiesViews
             PiecesGv.DataSource = repository.GetAllPieces();
             PiecesGv.Columns["UserScannedNavigation"].Visible = false;
             PiecesGv.Columns["LogRecords"].Visible = false;
+            PiecesGv.Columns["SerialNumbers"].Visible = false;
             PiecesGv.Refresh();
         }
     }

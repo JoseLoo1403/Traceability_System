@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace Traceability_System.Repositories
 
         public List<LogRecord> GetAllLogRecord()
         {
-            return context.LogRecords.ToList();
+            return context.LogRecords.Include(x => x.Piece).ToList();
         }
     }
 }

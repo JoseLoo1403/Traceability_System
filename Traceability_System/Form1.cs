@@ -13,6 +13,7 @@ using Traceability_System.Forms;
 using Traceability_System.Forms.PieceScanSelectionViews;
 using Traceability_System.Forms.EntitiesViews;
 using Traceability_System.Repositories;
+using Traceability_System.Modbus;
 
 namespace Traceability_System
 {
@@ -25,6 +26,7 @@ namespace Traceability_System
 
         GlobalContextInfo GlobalContext;
         Shift CurrentShift;
+
         private void Main_Load(object sender, EventArgs e)
         {
             GlobalContext = new GlobalContextInfo();

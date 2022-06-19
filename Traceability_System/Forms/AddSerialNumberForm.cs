@@ -75,6 +75,7 @@ namespace Traceability_System.Forms
         {
             if (SearchedSerialNumber == null)
             {
+                ChangeGuideText("No se ha buscado ningun codigo serial", Color.Red);
                 return;
             }
 
@@ -87,12 +88,23 @@ namespace Traceability_System.Forms
             }
             else
             {
-                repository.ChangeStateBySerialNumber(SearchedSerialNumber.SerialNumber1, true);
-                ChangeGuideText("Numero serial habilitado exitosamente", Color.Green);
+                var expire = (DateTime)SearchedSerialNumber.CreatedDate;
+                expire = expire.AddDays((int)SearchedSerialNumber.DaysEnable);
+                if (expire < DateTime.Now)
+                {
+                    repository.ActiveSerialForOneDay(SearchedSerialNumber);
+                    ChangeGuideText("Numero serial habilitado por un dia", Color.Green);
+                }
+                else
+                {
+                    repository.ChangeStateBySerialNumber(SearchedSerialNumber.SerialNumber1, true);
+                    ChangeGuideText("Numero serial habilitado exitosamente", Color.Green);
+                }
             }
 
             SearchedSerialNumber = null;
             TxtDeactivateSerial.Clear();
+            BtnDeactivate.Text = "Habilitar/Deshabilitar";
         }
 
         private void ChangeGuideText(string text, Color color)
@@ -144,7 +156,16 @@ namespace Traceability_System.Forms
             }
             else
             {
-                BtnDeactivate.Text = "Habilitar";
+                var expire = (DateTime)result.CreatedDate;
+                expire = expire.AddDays((int)result.DaysEnable);
+                if (expire < DateTime.Now)
+                {
+                    BtnDeactivate.Text = "Habilitar por un dia";
+                }
+                else
+                {
+                    BtnDeactivate.Text = "Habilitar";
+                }
             }
 
             SearchedSerialNumber = result;

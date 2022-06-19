@@ -11,6 +11,7 @@ using Traceability_System.Forms.PieceScanSelectionViews;
 using Traceability_System.Helpers;
 using Traceability_System.Models;
 using Traceability_System.Repositories;
+using Traceability_System.Modbus;
 
 namespace Traceability_System.Forms
 {
@@ -25,6 +26,7 @@ namespace Traceability_System.Forms
         int CurrentComponentNumber = 1;
         int FinishGood;
         int CurrentPieceId = 0;
+        ModbusMasterConnector connector = new ModbusMasterConnector();
 
         public PieceScanForm(GlobalContextInfo info, int generation)
         {
@@ -61,9 +63,21 @@ namespace Traceability_System.Forms
                 repository.GetPieceByPartNumber(TxtPartNumber.Text) : 
                 repository.GetPieceByPartNumberAndFinishedGood(TxtPartNumber.Text,FinishGood);
 
+
             if (Piece == null)
             {
                 //Piece not found in database
+
+                if (CurrentGeneration == 2)
+                {
+                    if (!ValidateGeneration())
+                    {
+                        //Different generation detected
+                        ContextInfo.AuthorizationRequiredEvent("authorization");
+                        return;
+                    } 
+                }
+
                 if (CurrentGeneration == 1)
                 {
                     ChangeTextMainGuide("No se encontro ninguna pieza con ese codigo", Color.Red);
@@ -121,6 +135,17 @@ namespace Traceability_System.Forms
             ChangeTextMainGuide($"Pieza {piece.PieceName} escaneada correctamente", Color.Green);
         }
 
+        private bool ValidateGeneration()
+        {
+            var result = repository.GetPieceByPartNumber(TxtPartNumber.Text);
+
+            if (result.Generation != CurrentGeneration && result.FinishedGood == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
         private void ValidateInfoForSerialNumber()
         {
             if (string.IsNullOrEmpty(TxtSerialNumber.Text)) { return; }
@@ -132,10 +157,18 @@ namespace Traceability_System.Forms
                 ScanMode = true;
                 CurrentComponentNumber++;
                 LblComponent.Text = $"Componente #{CurrentComponentNumber}";
-                ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green); 
+                ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green);
+                TxtPartNumber.Clear();
             }
         }
 
+        public void SendModbusSignal(Color color)
+        {
+            if (color == Color.Red)
+            {
+                connector.StartConnection();
+            }
+        }
         private bool GetAndValidateSerialNumber()
         {
             SerialNumberRepository repo = new SerialNumberRepository();
@@ -181,16 +214,24 @@ namespace Traceability_System.Forms
                 return;
             }
 
-            if (repository.FinishGoodExist(Convert.ToInt32(TxtFinishGood.Text)))
+            try
             {
-                FinishGood = Convert.ToInt32(TxtFinishGood.Text);
-                TxtFinishGood.Hide();
-                LblFinishGood.Hide();
-                ChangeTextMainGuide("Codigo escaneado correctamente", Color.Green);
+                if (repository.FinishGoodExist(Convert.ToInt32(TxtFinishGood.Text)))
+                {
+                    FinishGood = Convert.ToInt32(TxtFinishGood.Text);
+                    TxtFinishGood.Hide();
+                    LblFinishGood.Hide();
+                    ChangeTextMainGuide("Codigo escaneado correctamente", Color.Green);
+                }
+                else
+                {
+                    ChangeTextMainGuide($"El codigo {TxtFinishGood.Text} no existe", Color.Red);
+                }
             }
-            else
+            catch (Exception)
             {
-                ChangeTextMainGuide($"El codigo {TxtFinishGood.Text} no existe", Color.Red);
+                ChangeTextMainGuide("Ocurrio un error", Color.Red);
+                throw;
             }
         }
 
@@ -248,9 +289,12 @@ namespace Traceability_System.Forms
 
             if (ScanMode)
             {
-                ValidateInfoForPartNumber();
-                TxtPartNumber.Clear();
                 TxtPartNumber.Focus();
+                ValidateInfoForPartNumber();
+                if (ScanMode)
+                {
+                    TxtPartNumber.Clear();
+                }
             }
             else
             {

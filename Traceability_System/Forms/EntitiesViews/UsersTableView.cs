@@ -25,7 +25,8 @@ namespace Traceability_System.Forms.EntitiesViews
             UsersGv.DataSource = null;
             UsersGv.DataSource = repository.GetAllUsers();
             UsersGv.Columns["LogRecords"].Visible = false;
-            UsersGv.Columns["Pieces"].Visible = false;
+            UsersGv.Columns["ShiftNavigation"].Visible = false;
+            UsersGv.Columns["SerialNumbers"].Visible = false;
         }
         private void UsersTableView_Load(object sender, EventArgs e)
         {

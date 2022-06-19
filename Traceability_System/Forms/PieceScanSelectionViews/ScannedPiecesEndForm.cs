@@ -63,7 +63,14 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void BtnSaveUser_Click(object sender, EventArgs e)
         {
-            ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2));
+            if (Gen == 1)
+            {
+                ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2)); 
+            }
+            else
+            {
+                ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 1));
+            }
         }
 
         private void BtnLogout_Click(object sender, EventArgs e)

@@ -34,6 +34,7 @@ namespace Traceability_System.Forms
             this.LblInstrucctions = new System.Windows.Forms.Label();
             this.TxtCode = new System.Windows.Forms.TextBox();
             this.ValidatorTm = new System.Windows.Forms.Timer(this.components);
+            this.LblAuthorizationTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -73,11 +74,22 @@ namespace Traceability_System.Forms
             this.ValidatorTm.Interval = 700;
             this.ValidatorTm.Tick += new System.EventHandler(this.ValidatorTm_Tick);
             // 
+            // LblAuthorizationTitle
+            // 
+            this.LblAuthorizationTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblAuthorizationTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblAuthorizationTitle.Location = new System.Drawing.Point(124, 156);
+            this.LblAuthorizationTitle.Name = "LblAuthorizationTitle";
+            this.LblAuthorizationTitle.Size = new System.Drawing.Size(730, 80);
+            this.LblAuthorizationTitle.TabIndex = 5;
+            this.LblAuthorizationTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.LblAuthorizationTitle);
             this.Controls.Add(this.TxtCode);
             this.Controls.Add(this.LblInstrucctions);
             this.Controls.Add(this.label1);
@@ -93,5 +105,6 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.Label LblInstrucctions;
         private System.Windows.Forms.TextBox TxtCode;
         private System.Windows.Forms.Timer ValidatorTm;
+        private System.Windows.Forms.Label LblAuthorizationTitle;
     }
 }

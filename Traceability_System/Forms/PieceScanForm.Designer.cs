@@ -48,10 +48,10 @@ namespace Traceability_System.Forms
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(299, 24);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(259, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 36);
+            this.label1.Size = new System.Drawing.Size(336, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Escaneo de piezas";
             // 
@@ -60,7 +60,7 @@ namespace Traceability_System.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(55, 315);
+            this.label2.Location = new System.Drawing.Point(56, 328);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(294, 28);
             this.label2.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace Traceability_System.Forms
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(553, 315);
+            this.label3.Location = new System.Drawing.Point(554, 328);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(240, 28);
             this.label3.TabIndex = 2;
@@ -81,7 +81,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtPartNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtPartNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPartNumber.Location = new System.Drawing.Point(65, 366);
+            this.TxtPartNumber.Location = new System.Drawing.Point(66, 379);
             this.TxtPartNumber.Name = "TxtPartNumber";
             this.TxtPartNumber.Size = new System.Drawing.Size(267, 34);
             this.TxtPartNumber.TabIndex = 3;
@@ -90,7 +90,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtSerialNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtSerialNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSerialNumber.Location = new System.Drawing.Point(536, 366);
+            this.TxtSerialNumber.Location = new System.Drawing.Point(537, 379);
             this.TxtSerialNumber.Name = "TxtSerialNumber";
             this.TxtSerialNumber.Size = new System.Drawing.Size(267, 34);
             this.TxtSerialNumber.TabIndex = 4;
@@ -100,7 +100,7 @@ namespace Traceability_System.Forms
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(244, 470);
+            this.label4.Location = new System.Drawing.Point(258, 480);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(374, 41);
             this.label4.TabIndex = 5;
@@ -110,10 +110,10 @@ namespace Traceability_System.Forms
             // 
             this.LblComponent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblComponent.AutoSize = true;
-            this.LblComponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblComponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblComponent.Location = new System.Drawing.Point(313, 107);
             this.LblComponent.Name = "LblComponent";
-            this.LblComponent.Size = new System.Drawing.Size(226, 36);
+            this.LblComponent.Size = new System.Drawing.Size(239, 36);
             this.LblComponent.TabIndex = 6;
             this.LblComponent.Text = "Componente #1";
             // 
@@ -122,7 +122,7 @@ namespace Traceability_System.Forms
             this.LblGeneration.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblGeneration.AutoSize = true;
             this.LblGeneration.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblGeneration.Location = new System.Drawing.Point(338, 531);
+            this.LblGeneration.Location = new System.Drawing.Point(352, 541);
             this.LblGeneration.Name = "LblGeneration";
             this.LblGeneration.Size = new System.Drawing.Size(176, 41);
             this.LblGeneration.TabIndex = 7;
@@ -138,7 +138,7 @@ namespace Traceability_System.Forms
             // 
             this.LblMainGuide.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblMainGuide.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblMainGuide.Location = new System.Drawing.Point(145, 424);
+            this.LblMainGuide.Location = new System.Drawing.Point(146, 437);
             this.LblMainGuide.Name = "LblMainGuide";
             this.LblMainGuide.Size = new System.Drawing.Size(586, 28);
             this.LblMainGuide.TabIndex = 8;
@@ -148,7 +148,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtFinishGood.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtFinishGood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtFinishGood.Location = new System.Drawing.Point(303, 261);
+            this.TxtFinishGood.Location = new System.Drawing.Point(304, 274);
             this.TxtFinishGood.Name = "TxtFinishGood";
             this.TxtFinishGood.Size = new System.Drawing.Size(267, 34);
             this.TxtFinishGood.TabIndex = 10;
@@ -158,7 +158,7 @@ namespace Traceability_System.Forms
             this.LblFinishGood.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LblFinishGood.AutoSize = true;
             this.LblFinishGood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblFinishGood.Location = new System.Drawing.Point(320, 214);
+            this.LblFinishGood.Location = new System.Drawing.Point(321, 227);
             this.LblFinishGood.Name = "LblFinishGood";
             this.LblFinishGood.Size = new System.Drawing.Size(245, 28);
             this.LblFinishGood.TabIndex = 9;
