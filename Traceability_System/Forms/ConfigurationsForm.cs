@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Traceability_System.Helpers;
 using Traceability_System.Modbus;
+using Traceability_System.Repositories;
 
 namespace Traceability_System.Forms
 {
     public partial class ConfigurationsForm : UserControl
     {
         GlobalContextInfo ContextInfo;
+        ModbusMasterConnector c = new ModbusMasterConnector();
         public ConfigurationsForm(GlobalContextInfo info)
         {
             InitializeComponent();
@@ -29,12 +31,30 @@ namespace Traceability_System.Forms
 
         private void BtnVerify_Click(object sender, EventArgs e)
         {
-            ModbusMasterConnector c = new ModbusMasterConnector();
+            try
+            {
+                if (!c.IsReading)
+                {
+                    c.StartConnection(TxtIp.Text, Convert.ToInt32(TxtPort.Text));
+                }
+                c.TryGreenLight();
+                MessageBox.Show("Conexion exitosa");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-            var ipFormat = Encoding.ASCII.GetBytes(TxtIp.Text);
-            c.StartConnection(TxtIp.Text, Convert.ToInt32(TxtPort.Text));
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            ConfigurationRepository repository = new ConfigurationRepository();
 
-            c.WriteRegister(1);
+            repository.UpdateConfiguration("Ip", TxtIp.Text);
+            repository.UpdateConfiguration("Port", TxtPort.Text);
+
+            TxtPort.Clear();
+            TxtIp.Clear();
         }
     }
 }

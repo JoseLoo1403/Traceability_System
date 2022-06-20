@@ -36,6 +36,12 @@ namespace Traceability_System.Forms
                 return;
             }
 
+            if (SerialNumberExist())
+            {
+                ChangeGuideText("Este numero serial ya existe", Color.Red);
+                return;
+            }
+
             try
             {
                 SerialNumber serialNumberAdder = new SerialNumber()
@@ -58,6 +64,22 @@ namespace Traceability_System.Forms
 
             ChangeGuideText("El numero serial fue agregado correctamente", Color.Green);
             ClearTextBoxes();
+        }
+
+        private bool SerialNumberExist()
+        {
+            SerialNumberRepository repository = new SerialNumberRepository();
+
+            var result = repository.GetSerialNumberByNumber(Convert.ToInt32(TxtSerialNumber.Text));
+
+            if (result == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private Piece GetRelatedPiece()

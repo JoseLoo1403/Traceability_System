@@ -36,6 +36,7 @@ namespace Traceability_System.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.TxtPort = new System.Windows.Forms.TextBox();
             this.BtnVerify = new System.Windows.Forms.Button();
+            this.BtnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnShifts
@@ -55,7 +56,7 @@ namespace Traceability_System.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(274, 286);
+            this.label2.Location = new System.Drawing.Point(265, 230);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 25);
             this.label2.TabIndex = 27;
@@ -65,7 +66,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtIp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtIp.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtIp.Location = new System.Drawing.Point(399, 283);
+            this.TxtIp.Location = new System.Drawing.Point(390, 227);
             this.TxtIp.Name = "TxtIp";
             this.TxtIp.Size = new System.Drawing.Size(197, 31);
             this.TxtIp.TabIndex = 26;
@@ -87,7 +88,7 @@ namespace Traceability_System.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(316, 400);
+            this.label1.Location = new System.Drawing.Point(307, 344);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 25);
             this.label1.TabIndex = 30;
@@ -97,7 +98,7 @@ namespace Traceability_System.Forms
             // 
             this.TxtPort.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtPort.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPort.Location = new System.Drawing.Point(399, 394);
+            this.TxtPort.Location = new System.Drawing.Point(390, 338);
             this.TxtPort.Name = "TxtPort";
             this.TxtPort.Size = new System.Drawing.Size(197, 31);
             this.TxtPort.TabIndex = 29;
@@ -106,18 +107,31 @@ namespace Traceability_System.Forms
             // 
             this.BtnVerify.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnVerify.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnVerify.Location = new System.Drawing.Point(399, 488);
+            this.BtnVerify.Location = new System.Drawing.Point(543, 444);
             this.BtnVerify.Name = "BtnVerify";
-            this.BtnVerify.Size = new System.Drawing.Size(212, 68);
+            this.BtnVerify.Size = new System.Drawing.Size(210, 68);
             this.BtnVerify.TabIndex = 31;
             this.BtnVerify.Text = "Verificar Conexion";
             this.BtnVerify.UseVisualStyleBackColor = true;
             this.BtnVerify.Click += new System.EventHandler(this.BtnVerify_Click);
             // 
+            // BtnUpdate
+            // 
+            this.BtnUpdate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnUpdate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnUpdate.Location = new System.Drawing.Point(265, 444);
+            this.BtnUpdate.Name = "BtnUpdate";
+            this.BtnUpdate.Size = new System.Drawing.Size(210, 68);
+            this.BtnUpdate.TabIndex = 32;
+            this.BtnUpdate.Text = "Actualizar configuraciones";
+            this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+            // 
             // ConfigurationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.BtnVerify);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtPort);
@@ -141,5 +155,6 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtPort;
         private System.Windows.Forms.Button BtnVerify;
+        private System.Windows.Forms.Button BtnUpdate;
     }
 }

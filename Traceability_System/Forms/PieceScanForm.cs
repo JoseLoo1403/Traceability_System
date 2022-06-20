@@ -26,20 +26,26 @@ namespace Traceability_System.Forms
         int CurrentComponentNumber = 1;
         int FinishGood;
         int CurrentPieceId = 0;
-        ModbusMasterConnector connector = new ModbusMasterConnector();
+        ModbusMasterConnector connector { get; set; }
 
-        public PieceScanForm(GlobalContextInfo info, int generation)
+        public PieceScanForm(GlobalContextInfo info, int generation, ModbusMasterConnector con)
         {
             InitializeComponent();
             ContextInfo = info;
             repository = new PiecesRepository();
             CurrentGeneration = generation;
             LblGeneration.Text = $"Generacion {generation}";
+            connector = con;
 
             if (generation == 1)
             {
                 LblFinishGood.Hide();
                 TxtFinishGood.Hide();
+            }
+
+            if (!connector.IsReading)
+            {
+                connector.StartConnection();
             }
         }
 
@@ -50,7 +56,7 @@ namespace Traceability_System.Forms
                 //Process finish 
                 TimerScan.Stop();
                 UpdatePiecesState();
-                ContextInfo.OpenNewFormEvent(new ScannedPiecesEndForm(ScannedPieces, ContextInfo, CurrentGeneration,SerialNumbers));
+                ContextInfo.OpenNewFormEvent(new ScannedPiecesEndForm(ScannedPieces, ContextInfo, CurrentGeneration,SerialNumbers, connector));
                 return;
             }
 
@@ -72,7 +78,8 @@ namespace Traceability_System.Forms
                 {
                     if (!ValidateGeneration())
                     {
-                        //Different generation detected
+                        //Different generation detected for second gen scanning process
+                        SendModbusSignal(Color.Red);
                         ContextInfo.AuthorizationRequiredEvent("authorization");
                         return;
                     } 
@@ -101,6 +108,7 @@ namespace Traceability_System.Forms
             if (piece.Generation != CurrentGeneration)
             {
                 //Different generation detected
+                SendModbusSignal(Color.Red);
                 ContextInfo.AuthorizationRequiredEvent("authorization");
                 return;
             }
@@ -159,14 +167,23 @@ namespace Traceability_System.Forms
                 LblComponent.Text = $"Componente #{CurrentComponentNumber}";
                 ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green);
                 TxtPartNumber.Clear();
+                SendModbusSignal(Color.Green);
             }
         }
 
         public void SendModbusSignal(Color color)
         {
-            if (color == Color.Red)
+            if (!connector.IsReading)
             {
                 connector.StartConnection();
+            }
+            if (color == Color.Green)
+            {
+                connector.ModbusGreenLightOn();
+            }
+            else
+            {
+                connector.ModbusRedLightOn();
             }
         }
         private bool GetAndValidateSerialNumber()

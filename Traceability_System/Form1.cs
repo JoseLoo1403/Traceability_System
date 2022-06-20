@@ -26,10 +26,12 @@ namespace Traceability_System
 
         GlobalContextInfo GlobalContext;
         Shift CurrentShift;
+        ModbusMasterConnector MasterConnector;
 
         private void Main_Load(object sender, EventArgs e)
         {
             GlobalContext = new GlobalContextInfo();
+            MasterConnector = new ModbusMasterConnector();
 
             //Events
             GlobalContext.UserLoginEventHandler += UserLoggedEvent;
@@ -39,7 +41,7 @@ namespace Traceability_System
             GlobalContext.ShiftUpdateEventHandler += ShiftUpdatedEvent;
 
             //Initial calls
-            LoadForm(new Login(GlobalContext,"login"));
+            LoadForm(new Login(GlobalContext,"login", MasterConnector));
             ButtonsRestrictions();
             StartShiftValidation();
         }
@@ -82,7 +84,7 @@ namespace Traceability_System
 
         private void UserLoggedEvent(object sender, User user)
         {
-            LoadForm(new SelectGenerationForm(GlobalContext));
+            LoadForm(new SelectGenerationForm(GlobalContext,MasterConnector));
             LblUser.Text = GlobalContext.CurrentUser.Name;
             ButtonsRestrictions();
         }
@@ -91,7 +93,7 @@ namespace Traceability_System
         {
             if (e == "authorization")
             {
-                Login f = new Login(GlobalContext, e);
+                Login f = new Login(GlobalContext, e, MasterConnector);
                 f.Dock = DockStyle.Fill;
                 MainPanel.Controls.Add(f);
                 MainPanel.Tag = f;
@@ -160,20 +162,20 @@ namespace Traceability_System
         {
             GlobalContext.CurrentUser = null;
             GetCurrentShift();
-            LoadForm(new Login(GlobalContext, "ShiftChange"));
+            LoadForm(new Login(GlobalContext, "ShiftChange", MasterConnector));
             ButtonsRestrictions();
         }
 
         private void Logout()
         {
             GlobalContext.CurrentUser = null;
-            LoadForm(new Login(GlobalContext,"login"));
+            LoadForm(new Login(GlobalContext,"login", MasterConnector));
             LblUser.Text = "";
             ButtonsRestrictions();
         }
         private void BtnScanPiece_Click(object sender, EventArgs e)
         {
-            LoadForm(new SelectGenerationForm(GlobalContext));
+            LoadForm(new SelectGenerationForm(GlobalContext, MasterConnector));
         }
 
         private void BtnUsers_Click(object sender, EventArgs e)

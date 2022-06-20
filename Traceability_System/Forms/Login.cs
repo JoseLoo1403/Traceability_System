@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Traceability_System.Helpers;
 using Traceability_System.Models;
 using Traceability_System.Repositories;
+using Traceability_System.Modbus;
 
 namespace Traceability_System.Forms
 {
@@ -18,12 +19,15 @@ namespace Traceability_System.Forms
         GlobalContextInfo contextInfo { get; set; }
         UserRepository userRepository { get; set; }
         string Mode { get; set; }
-        public Login(GlobalContextInfo info, string mode)
+
+        ModbusMasterConnector connector { get; set; }
+        public Login(GlobalContextInfo info, string mode, ModbusMasterConnector con)
         {
             InitializeComponent();
             contextInfo = info;
             userRepository = new UserRepository();
             Mode = mode;
+            connector = con;
 
             InitialMessage();
         }
@@ -68,6 +72,7 @@ namespace Traceability_System.Forms
                 case "authorization":
                     if (user.Position == "admin")
                     {
+                        connector.ModbusRedLightOff();
                         contextInfo.AuthorizationRequiredEvent("active");
                     }
                     else

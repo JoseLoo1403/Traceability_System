@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Traceability_System.Models;
 using Traceability_System.Repositories;
 using Traceability_System.Helpers;
+using Traceability_System.Modbus;
 
 namespace Traceability_System.Forms.PieceScanSelectionViews
 {
@@ -19,13 +20,16 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
         List<int> SerialNumbers;
         GlobalContextInfo ContextInfo;
         int Gen;
-        public ScannedPiecesEndForm(List<Piece> pieces, GlobalContextInfo info, int generation, List<int> serialNumbers)
+        ModbusMasterConnector connector;
+
+        public ScannedPiecesEndForm(List<Piece> pieces, GlobalContextInfo info, int generation, List<int> serialNumbers, ModbusMasterConnector con)
         {
             InitializeComponent();
             ScannedPieces = pieces;
             ContextInfo = info;
             Gen = generation;
             SerialNumbers = serialNumbers;
+            connector = con;
         }
 
         private void ScannedPiecesEndForm_Load(object sender, EventArgs e)
@@ -58,18 +62,18 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void BtnContinue_Click(object sender, EventArgs e)
         {
-            ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, Gen));
+            ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, Gen, connector));
         }
 
         private void BtnSaveUser_Click(object sender, EventArgs e)
         {
             if (Gen == 1)
             {
-                ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2)); 
+                ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2, connector)); 
             }
             else
             {
-                ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 1));
+                ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 1, connector));
             }
         }
 
