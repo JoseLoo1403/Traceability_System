@@ -51,6 +51,14 @@ namespace Traceability_System.Forms
             this.TxtModificationStartHour = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TxtStartHour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtStartMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtEndMinute)).BeginInit();
@@ -96,7 +104,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtStartHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtStartHour.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtStartHour.Location = new System.Drawing.Point(349, 253);
+            this.TxtStartHour.Location = new System.Drawing.Point(401, 255);
+            this.TxtStartHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.TxtStartHour.Name = "TxtStartHour";
             this.TxtStartHour.Size = new System.Drawing.Size(70, 31);
             this.TxtStartHour.TabIndex = 23;
@@ -105,7 +118,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtStartMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtStartMinute.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtStartMinute.Location = new System.Drawing.Point(454, 253);
+            this.TxtStartMinute.Location = new System.Drawing.Point(563, 255);
+            this.TxtStartMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.TxtStartMinute.Name = "TxtStartMinute";
             this.TxtStartMinute.Size = new System.Drawing.Size(70, 31);
             this.TxtStartMinute.TabIndex = 24;
@@ -124,7 +142,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtEndMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtEndMinute.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtEndMinute.Location = new System.Drawing.Point(454, 322);
+            this.TxtEndMinute.Location = new System.Drawing.Point(563, 324);
+            this.TxtEndMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.TxtEndMinute.Name = "TxtEndMinute";
             this.TxtEndMinute.Size = new System.Drawing.Size(70, 31);
             this.TxtEndMinute.TabIndex = 29;
@@ -133,7 +156,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtEndHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtEndHour.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtEndHour.Location = new System.Drawing.Point(349, 322);
+            this.TxtEndHour.Location = new System.Drawing.Point(401, 324);
+            this.TxtEndHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.TxtEndHour.Name = "TxtEndHour";
             this.TxtEndHour.Size = new System.Drawing.Size(70, 31);
             this.TxtEndHour.TabIndex = 28;
@@ -220,7 +248,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtModificationEndMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtModificationEndMinute.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtModificationEndMinute.Location = new System.Drawing.Point(454, 658);
+            this.TxtModificationEndMinute.Location = new System.Drawing.Point(563, 658);
+            this.TxtModificationEndMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.TxtModificationEndMinute.Name = "TxtModificationEndMinute";
             this.TxtModificationEndMinute.Size = new System.Drawing.Size(70, 31);
             this.TxtModificationEndMinute.TabIndex = 44;
@@ -229,7 +262,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtModificationEndHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtModificationEndHour.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtModificationEndHour.Location = new System.Drawing.Point(349, 658);
+            this.TxtModificationEndHour.Location = new System.Drawing.Point(401, 656);
+            this.TxtModificationEndHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.TxtModificationEndHour.Name = "TxtModificationEndHour";
             this.TxtModificationEndHour.Size = new System.Drawing.Size(70, 31);
             this.TxtModificationEndHour.TabIndex = 43;
@@ -249,7 +287,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtModificationStartMinute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtModificationStartMinute.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtModificationStartMinute.Location = new System.Drawing.Point(454, 589);
+            this.TxtModificationStartMinute.Location = new System.Drawing.Point(563, 589);
+            this.TxtModificationStartMinute.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.TxtModificationStartMinute.Name = "TxtModificationStartMinute";
             this.TxtModificationStartMinute.Size = new System.Drawing.Size(70, 31);
             this.TxtModificationStartMinute.TabIndex = 40;
@@ -258,7 +301,12 @@ namespace Traceability_System.Forms
             // 
             this.TxtModificationStartHour.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TxtModificationStartHour.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtModificationStartHour.Location = new System.Drawing.Point(348, 589);
+            this.TxtModificationStartHour.Location = new System.Drawing.Point(400, 587);
+            this.TxtModificationStartHour.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.TxtModificationStartHour.Name = "TxtModificationStartHour";
             this.TxtModificationStartHour.Size = new System.Drawing.Size(70, 31);
             this.TxtModificationStartHour.TabIndex = 39;
@@ -285,11 +333,107 @@ namespace Traceability_System.Forms
             this.label8.TabIndex = 46;
             this.label8.Text = "Moficiar turno";
             // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(344, 259);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 25);
+            this.label9.TabIndex = 47;
+            this.label9.Text = "Hora:";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(488, 259);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 25);
+            this.label10.TabIndex = 48;
+            this.label10.Text = "Minuto:";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(484, 326);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 25);
+            this.label11.TabIndex = 50;
+            this.label11.Text = "Minuto:";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(340, 326);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 25);
+            this.label12.TabIndex = 49;
+            this.label12.Text = "Hora:";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(488, 662);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 25);
+            this.label13.TabIndex = 54;
+            this.label13.Text = "Minuto:";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(340, 658);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 25);
+            this.label14.TabIndex = 53;
+            this.label14.Text = "Hora:";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(488, 593);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 25);
+            this.label15.TabIndex = 52;
+            this.label15.Text = "Minuto:";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(340, 591);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(55, 25);
+            this.label16.TabIndex = 51;
+            this.label16.Text = "Hora:";
+            // 
             // ShiftsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TxtModificationEndMinute);
             this.Controls.Add(this.TxtModificationEndHour);
@@ -351,5 +495,13 @@ namespace Traceability_System.Forms
         private System.Windows.Forms.NumericUpDown TxtModificationStartHour;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

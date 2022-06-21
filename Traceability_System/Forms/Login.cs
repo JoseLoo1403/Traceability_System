@@ -70,7 +70,19 @@ namespace Traceability_System.Forms
                     break;
 
                 case "authorization":
-                    if (user.Position == "admin")
+                    if (user.Position == "admin" || user.Position == "supervisor")
+                    {
+                        connector.ModbusRedLightOff();
+                        contextInfo.AuthorizationRequiredEvent("active");
+                    }
+                    else
+                    {
+                        ChangeTextMainGuide($"El usuario [ {user.Name} ] no esta autorizado para realizar esta accion", Color.Red);
+                        return;
+                    }
+                    break;
+                case "authorization2":
+                    if (user.Position == "admin" || user.Position == "supervisor")
                     {
                         connector.ModbusRedLightOff();
                         contextInfo.AuthorizationRequiredEvent("active");
@@ -97,6 +109,10 @@ namespace Traceability_System.Forms
             {
                 case "authorization":
                     LblAuthorizationTitle.Text = "La pieza que escaneo no pertenece a la generacion seleccionada, porfavor contacte un supervisor";
+                    LblAuthorizationTitle.ForeColor = Color.Red;
+                    break;
+                case "authorization2":
+                    LblAuthorizationTitle.Text = "La pieza que escaneo no pertenece al FinishedGood seleccionado, porfavor contacte un supervisor";
                     LblAuthorizationTitle.ForeColor = Color.Red;
                     break;
                 case "ShiftChange":

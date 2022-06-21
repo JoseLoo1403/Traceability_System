@@ -89,6 +89,7 @@ namespace Traceability_System.Forms.EntitiesViews
             this.LogGv.GridColor = System.Drawing.SystemColors.ControlLight;
             this.LogGv.Location = new System.Drawing.Point(0, 88);
             this.LogGv.Name = "LogGv";
+            this.LogGv.ReadOnly = true;
             this.LogGv.RowHeadersWidth = 51;
             this.LogGv.RowTemplate.Height = 29;
             this.LogGv.Size = new System.Drawing.Size(1160, 652);

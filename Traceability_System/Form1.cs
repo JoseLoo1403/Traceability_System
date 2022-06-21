@@ -63,7 +63,7 @@ namespace Traceability_System
             BtnLogout.Enabled = true;
             BtnClose.Enabled = true;
 
-            if (GlobalContext.CurrentUser.Position == "admin")
+            if (GlobalContext.CurrentUser.Position == "admin" || GlobalContext.CurrentUser.Position == "supervisor")
             {
                 BtnConfiguration.Enabled = true;
                 BtnScanPiece.Enabled = true;
@@ -197,7 +197,13 @@ namespace Traceability_System
 
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            Logout();
+            var confirmResult = MessageBox.Show("Esta seguro que quiere cerrar sesion?",
+                                     "Intento de cerrar sesion",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Logout(); 
+            }
         }
 
         private void BtnLogRecords_Click(object sender, EventArgs e)
@@ -213,6 +219,11 @@ namespace Traceability_System
         private void BtnConfiguration_Click(object sender, EventArgs e)
         {
             LoadForm(new ConfigurationsForm(GlobalContext));
+        }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

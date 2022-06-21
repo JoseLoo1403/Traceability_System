@@ -122,13 +122,14 @@ namespace Traceability_System.Forms
             // BtnCreate
             // 
             this.BtnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnCreate.BackColor = System.Drawing.Color.PaleGreen;
             this.BtnCreate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnCreate.Location = new System.Drawing.Point(696, 246);
             this.BtnCreate.Name = "BtnCreate";
             this.BtnCreate.Size = new System.Drawing.Size(246, 75);
             this.BtnCreate.TabIndex = 7;
             this.BtnCreate.Text = "Agregar";
-            this.BtnCreate.UseVisualStyleBackColor = true;
+            this.BtnCreate.UseVisualStyleBackColor = false;
             this.BtnCreate.Click += new System.EventHandler(this.BtnCreate_Click);
             // 
             // BtnSearch

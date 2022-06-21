@@ -236,6 +236,7 @@ namespace Traceability_System.Forms
             // TxtName
             // 
             this.TxtName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TxtName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TxtName.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtName.FormattingEnabled = true;
             this.TxtName.Items.AddRange(new object[] {

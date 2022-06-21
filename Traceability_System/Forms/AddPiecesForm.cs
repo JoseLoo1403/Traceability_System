@@ -18,6 +18,7 @@ namespace Traceability_System.Forms
     {
         GlobalContextInfo ContextInfo;
         Piece UpdatePiece;
+        PiecesRepository repository = new PiecesRepository();
         public AddPiecesForm(GlobalContextInfo info)
         {
             InitializeComponent();
@@ -26,10 +27,16 @@ namespace Traceability_System.Forms
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            PiecesRepository repository = new PiecesRepository();
 
             try
             {
+                if (ValidateDuplicates())
+                {
+                    ChangeTextMainGuide("Esta pieza ya existe", Color.Red);
+                    ClearTextBoxes();
+                    return;
+                }
+
                 Piece PieceAdder = new Piece()
                 {
                     PieceName = TxtName.Text,
@@ -56,8 +63,21 @@ namespace Traceability_System.Forms
             ChangeTextMainGuide("La pieza fue agregada correctamente", Color.Green);
         }
 
+        private bool ValidateDuplicates()
+        {
+            var result = repository.GetPieceByPartNumber(TxtPartNumber.Text);
+
+            if (result.PieceName == TxtName.Text && result.Generation == Convert.ToInt32(TxtGeneration.Text))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void ClearTextBoxes()
         {
+            TxtName.ResetText();
             TxtPartNumber.Clear();
             TxtGeneration.Text  = "";
             TxtFinishGood.Clear();

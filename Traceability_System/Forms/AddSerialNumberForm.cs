@@ -17,6 +17,7 @@ namespace Traceability_System.Forms
     {
         GlobalContextInfo ContextInfo;
         SerialNumber SearchedSerialNumber;
+        SerialNumberRepository repository = new SerialNumberRepository();
         public AddSerialNumberForm(GlobalContextInfo info)
         {
             InitializeComponent();
@@ -25,7 +26,6 @@ namespace Traceability_System.Forms
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            SerialNumberRepository repository = new SerialNumberRepository();
 
             Piece piece = GetRelatedPiece();
 
@@ -68,8 +68,6 @@ namespace Traceability_System.Forms
 
         private bool SerialNumberExist()
         {
-            SerialNumberRepository repository = new SerialNumberRepository();
-
             var result = repository.GetSerialNumberByNumber(Convert.ToInt32(TxtSerialNumber.Text));
 
             if (result == null)
@@ -81,6 +79,7 @@ namespace Traceability_System.Forms
                 return true;
             }
         }
+
 
         private Piece GetRelatedPiece()
         {

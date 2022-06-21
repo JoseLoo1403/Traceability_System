@@ -27,6 +27,11 @@ namespace Traceability_System.Repositories
             return context.Pieces.FirstOrDefault(x => x.PiecePartNumber == partNumber && x.FinishedGood == finishedGood);
         }
 
+        public Piece GetPieceByPartNumberAndGeneration(string partNumber, int generation)
+        {
+            return context.Pieces.FirstOrDefault(x => x.PiecePartNumber == partNumber && x.Generation == generation);
+        }
+
         public List<Piece> GetAllPieces()
         {
             return context.Pieces.ToList();
@@ -37,7 +42,6 @@ namespace Traceability_System.Repositories
             foreach (var piece in pieces)
             {
                 var result = context.Pieces.FirstOrDefault(x => x.Id == piece.Id);
-                result.Active = false;
                 result.UserScanned = userCode;
                 result.ScannedDate = DateFormatHelper.GetCurrentDate();
                 context.SaveChanges();

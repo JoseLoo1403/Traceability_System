@@ -42,11 +42,11 @@ namespace Traceability_System.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(260, 86);
+            this.label1.Location = new System.Drawing.Point(309, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(412, 41);
+            this.label1.Size = new System.Drawing.Size(336, 41);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Sistema de trazabilidad APTIV";
+            this.label1.Text = "Sistema de Trazabilidad ";
             // 
             // LblInstrucctions
             // 

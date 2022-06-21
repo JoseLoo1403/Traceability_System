@@ -46,6 +46,7 @@ namespace Traceability_System.Forms.EntitiesViews
             this.UsersGv.GridColor = System.Drawing.SystemColors.ControlLight;
             this.UsersGv.Location = new System.Drawing.Point(0, 69);
             this.UsersGv.Name = "UsersGv";
+            this.UsersGv.ReadOnly = true;
             this.UsersGv.RowHeadersWidth = 51;
             this.UsersGv.RowTemplate.Height = 29;
             this.UsersGv.Size = new System.Drawing.Size(966, 592);

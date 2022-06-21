@@ -30,6 +30,8 @@ namespace Traceability_System
         private void InitializeComponent()
         {
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.LblShift = new System.Windows.Forms.Label();
             this.BtnPieces = new System.Windows.Forms.Button();
             this.BtnLogout = new System.Windows.Forms.Button();
@@ -41,13 +43,17 @@ namespace Traceability_System
             this.BtnScanPiece = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.TopPanel.BackColor = System.Drawing.Color.Transparent;
             this.TopPanel.BackgroundImage = global::Traceability_System.Properties.Resources.DegradadoTraza;
             this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TopPanel.Controls.Add(this.pictureBox1);
+            this.TopPanel.Controls.Add(this.pictureBox2);
             this.TopPanel.Controls.Add(this.LblShift);
             this.TopPanel.Controls.Add(this.BtnPieces);
             this.TopPanel.Controls.Add(this.BtnLogout);
@@ -60,8 +66,30 @@ namespace Traceability_System
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(1164, 113);
+            this.TopPanel.Size = new System.Drawing.Size(1640, 113);
             this.TopPanel.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBox1.Image = global::Traceability_System.Properties.Resources.LogoAptivTransparent1;
+            this.pictureBox1.Location = new System.Drawing.Point(1467, 60);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(149, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox2.Image = global::Traceability_System.Properties.Resources.EesCorpTransparent;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 63);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(204, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
             // 
             // LblShift
             // 
@@ -83,7 +111,7 @@ namespace Traceability_System
             this.BtnPieces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPieces.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnPieces.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnPieces.Location = new System.Drawing.Point(659, 60);
+            this.BtnPieces.Location = new System.Drawing.Point(936, 58);
             this.BtnPieces.Name = "BtnPieces";
             this.BtnPieces.Size = new System.Drawing.Size(188, 47);
             this.BtnPieces.TabIndex = 7;
@@ -98,7 +126,7 @@ namespace Traceability_System
             this.BtnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogout.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnLogout.Location = new System.Drawing.Point(1031, 0);
+            this.BtnLogout.Location = new System.Drawing.Point(1507, 0);
             this.BtnLogout.Name = "BtnLogout";
             this.BtnLogout.Size = new System.Drawing.Size(97, 37);
             this.BtnLogout.TabIndex = 6;
@@ -113,7 +141,7 @@ namespace Traceability_System
             this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnClose.Location = new System.Drawing.Point(1127, 0);
+            this.BtnClose.Location = new System.Drawing.Point(1603, 0);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(37, 37);
             this.BtnClose.TabIndex = 5;
@@ -141,7 +169,7 @@ namespace Traceability_System
             this.BtnConfiguration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConfiguration.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnConfiguration.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnConfiguration.Location = new System.Drawing.Point(855, 60);
+            this.BtnConfiguration.Location = new System.Drawing.Point(1132, 58);
             this.BtnConfiguration.Name = "BtnConfiguration";
             this.BtnConfiguration.Size = new System.Drawing.Size(188, 47);
             this.BtnConfiguration.TabIndex = 3;
@@ -156,7 +184,7 @@ namespace Traceability_System
             this.BtnLogRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogRecords.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnLogRecords.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnLogRecords.Location = new System.Drawing.Point(463, 60);
+            this.BtnLogRecords.Location = new System.Drawing.Point(740, 58);
             this.BtnLogRecords.Name = "BtnLogRecords";
             this.BtnLogRecords.Size = new System.Drawing.Size(188, 47);
             this.BtnLogRecords.TabIndex = 2;
@@ -171,7 +199,7 @@ namespace Traceability_System
             this.BtnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUsers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnUsers.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnUsers.Location = new System.Drawing.Point(267, 60);
+            this.BtnUsers.Location = new System.Drawing.Point(544, 58);
             this.BtnUsers.Name = "BtnUsers";
             this.BtnUsers.Size = new System.Drawing.Size(188, 47);
             this.BtnUsers.TabIndex = 1;
@@ -186,7 +214,7 @@ namespace Traceability_System
             this.BtnScanPiece.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnScanPiece.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnScanPiece.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnScanPiece.Location = new System.Drawing.Point(71, 60);
+            this.BtnScanPiece.Location = new System.Drawing.Point(348, 58);
             this.BtnScanPiece.Name = "BtnScanPiece";
             this.BtnScanPiece.Size = new System.Drawing.Size(188, 47);
             this.BtnScanPiece.TabIndex = 0;
@@ -200,15 +228,16 @@ namespace Traceability_System
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 113);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1164, 582);
+            this.MainPanel.Size = new System.Drawing.Size(1640, 731);
             this.MainPanel.TabIndex = 1;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1164, 695);
+            this.ClientSize = new System.Drawing.Size(1640, 844);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.TopPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -218,6 +247,8 @@ namespace Traceability_System
             this.Load += new System.EventHandler(this.Main_Load);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,6 +266,8 @@ namespace Traceability_System
         private System.Windows.Forms.Button BtnLogout;
         private System.Windows.Forms.Button BtnPieces;
         private System.Windows.Forms.Label LblShift;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

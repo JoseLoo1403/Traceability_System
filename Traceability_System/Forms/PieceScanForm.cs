@@ -82,7 +82,15 @@ namespace Traceability_System.Forms
                         SendModbusSignal(Color.Red);
                         ContextInfo.AuthorizationRequiredEvent("authorization");
                         return;
-                    } 
+                    }
+
+                    if (!ValidateExistance())
+                    {
+                        //Piece
+                        SendModbusSignal(Color.Red);
+                        ContextInfo.AuthorizationRequiredEvent("authorization2");
+                        return;
+                    }
                 }
 
                 if (CurrentGeneration == 1)
@@ -126,7 +134,7 @@ namespace Traceability_System.Forms
 
             if (piece.Active == false)
             {
-                ChangeTextMainGuide("Esta pieza ya ha sido escaneada", Color.Red);
+                ChangeTextMainGuide("Esta pieza a expirado", Color.Red);
                 return;
             }
 
@@ -147,12 +155,29 @@ namespace Traceability_System.Forms
         {
             var result = repository.GetPieceByPartNumber(TxtPartNumber.Text);
 
+            if (result == null)
+            {
+                return true;
+            }
+
             if (result.Generation != CurrentGeneration && result.FinishedGood == null)
             {
                 return false;
             }
 
             return true;
+        }
+
+        public bool ValidateExistance()
+        {
+            var result = repository.GetPieceByPartNumberAndGeneration(TxtPartNumber.Text,2);
+
+            if (result == null)
+            {
+                return false;
+            }
+
+            return  true;
         }
         private void ValidateInfoForSerialNumber()
         {
