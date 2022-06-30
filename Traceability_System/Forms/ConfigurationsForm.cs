@@ -17,11 +17,13 @@ namespace Traceability_System.Forms
     {
         GlobalContextInfo ContextInfo;
         ModbusMasterConnector c = new ModbusMasterConnector();
-        public ConfigurationsForm(GlobalContextInfo info)
+        ModbusMasterConnector Connector { get; set; }
+        public ConfigurationsForm(GlobalContextInfo info, ModbusMasterConnector con)
         {
             InitializeComponent();
 
             ContextInfo = info;
+            Connector = con;
         }
 
         private void BtnShifts_Click(object sender, EventArgs e)
@@ -33,6 +35,10 @@ namespace Traceability_System.Forms
         {
             try
             {
+                if (Connector.IsReading)
+                {
+                    Connector.CloseConnection(); 
+                }
                 if (!c.IsReading)
                 {
                     c.StartConnection(TxtIp.Text, Convert.ToInt32(TxtPort.Text));

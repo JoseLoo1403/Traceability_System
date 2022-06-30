@@ -72,7 +72,6 @@ namespace Traceability_System.Forms
                 case "authorization":
                     if (user.Position == "admin" || user.Position == "supervisor")
                     {
-                        connector.ModbusRedLightOff();
                         contextInfo.AuthorizationRequiredEvent("active");
                     }
                     else
@@ -84,7 +83,6 @@ namespace Traceability_System.Forms
                 case "authorization2":
                     if (user.Position == "admin" || user.Position == "supervisor")
                     {
-                        connector.ModbusRedLightOff();
                         contextInfo.AuthorizationRequiredEvent("active");
                     }
                     else

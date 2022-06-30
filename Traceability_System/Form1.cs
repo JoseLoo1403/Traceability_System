@@ -44,6 +44,8 @@ namespace Traceability_System
             LoadForm(new Login(GlobalContext,"login", MasterConnector));
             ButtonsRestrictions();
             StartShiftValidation();
+            MasterConnector.StartConnection();
+            MasterConnector.ModbusRedLightOn();
         }
 
         private void ButtonsRestrictions()
@@ -218,7 +220,7 @@ namespace Traceability_System
 
         private void BtnConfiguration_Click(object sender, EventArgs e)
         {
-            LoadForm(new ConfigurationsForm(GlobalContext));
+            LoadForm(new ConfigurationsForm(GlobalContext, MasterConnector));
         }
 
         private void MainPanel_Paint(object sender, PaintEventArgs e)

@@ -67,6 +67,11 @@ namespace Traceability_System.Forms
         {
             var result = repository.GetPieceByPartNumber(TxtPartNumber.Text);
 
+            if (result == null)
+            {
+                return false;
+            }
+
             if (result.PieceName == TxtName.Text && result.Generation == Convert.ToInt32(TxtGeneration.Text))
             {
                 return true;
@@ -77,11 +82,11 @@ namespace Traceability_System.Forms
 
         private void ClearTextBoxes()
         {
-            TxtName.ResetText();
+            TxtName.SelectedValue = 0;
             TxtPartNumber.Clear();
             TxtGeneration.Text  = "";
             TxtFinishGood.Clear();
-            TxtDays.Text = "";
+            TxtDays.Value = 0;
         }
 
         private int GetComponentNumber()

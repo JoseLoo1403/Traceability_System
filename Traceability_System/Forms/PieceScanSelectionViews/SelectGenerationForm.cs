@@ -26,11 +26,13 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void BtnGen1_Click(object sender, EventArgs e)
         {
+            Connector.SetGenerationLight(1);
             ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo,1, Connector));
         }
 
         private void BtnGen2_Click(object sender, EventArgs e)
         {
+            Connector.SetGenerationLight(2);
             ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2, Connector));
         }
     }

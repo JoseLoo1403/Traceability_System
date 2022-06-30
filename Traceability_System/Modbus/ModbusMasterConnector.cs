@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Net;
 using Traceability_System.Repositories;
 using Traceability_System.Models;
+using System.Threading;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Traceability_System.Modbus
 {
@@ -77,20 +79,6 @@ namespace Traceability_System.Modbus
             Port = Convert.ToInt32(configurations.FirstOrDefault(x => x.Name == "Port").Value);
         }
 
-        public void ModbusGreenLightOn()
-        {
-            slave.DataStore.HoldingRegisters[2] = 1;
-
-            var t = new Timer();
-            t.Interval = 10000;
-
-            t.Tick += (s, e) =>
-            {
-                slave.DataStore.HoldingRegisters[2] = 0;
-                t.Stop();
-            };
-            t.Start();
-        }
 
         public void TryGreenLight()
         {
@@ -102,35 +90,42 @@ namespace Traceability_System.Modbus
             t.Tick += (s, e) =>
             {
                 slave.DataStore.HoldingRegisters[1] = 0;
-                CloseConnection();
+                Thread.Sleep(500);
+                slave.Dispose();
+                IsReading = false;
                 t.Stop();
             };
             t.Start();
         }
 
-        public void ModbusRedLightOn()
+        public void ModbusGreenLightOn()
         {
-            slave.DataStore.HoldingRegisters[3] = 1;
+            slave.DataStore.HoldingRegisters[2] = 1;
         }
 
-        public void ModbusRedLightOff()
+        public void ModbusRedLightOn()
         {
+            slave.DataStore.HoldingRegisters[2] = 0;
+        }
+
+        public void SetGenerationLight(int generation)
+        {
+            slave.DataStore.HoldingRegisters[3] = (ushort)generation;
+        }
+
+        private void SetAllRegisterCero()
+        {
+            slave.DataStore.HoldingRegisters[1] = 0;
+            slave.DataStore.HoldingRegisters[2] = 0;
             slave.DataStore.HoldingRegisters[3] = 0;
         }
 
         public void CloseConnection()
         {
-            //var t = new Timer();
-            //t.Interval = 2000;
-
-            //t.Tick += (s, e) =>
-            //{
-            //    slave.Dispose();
-            //    IsReading = false;
-            //    t.Stop();
-            //};
-            //t.Start();
-
+            if (IsReading)
+            {
+                SetAllRegisterCero();
+            }
             slave.Dispose();
             IsReading = false;
         }

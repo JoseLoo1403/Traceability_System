@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -28,7 +29,8 @@ namespace Traceability_System.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-8C1AB2N;Database=Traceability_System_Db;Trusted_Connection=True;");
+                string readText = System.IO.File.ReadAllText(System.IO.Path.GetDirectoryName(Application.ExecutablePath)+"\\Connection.txt");
+                optionsBuilder.UseSqlServer(readText);
             }
         }
 

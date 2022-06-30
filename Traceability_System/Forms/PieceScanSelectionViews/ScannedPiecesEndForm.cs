@@ -62,11 +62,13 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void BtnContinue_Click(object sender, EventArgs e)
         {
+            connector.ModbusRedLightOn();
             ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, Gen, connector));
         }
 
         private void BtnSaveUser_Click(object sender, EventArgs e)
         {
+            connector.ModbusRedLightOn();
             if (Gen == 1)
             {
                 ContextInfo.OpenNewFormEvent(new PieceScanForm(ContextInfo, 2, connector)); 
@@ -79,6 +81,7 @@ namespace Traceability_System.Forms.PieceScanSelectionViews
 
         private void BtnLogout_Click(object sender, EventArgs e)
         {
+            connector.ModbusRedLightOn();
             ContextInfo.UserLogoutEvent();
         }
     }

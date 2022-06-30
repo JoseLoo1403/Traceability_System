@@ -55,6 +55,7 @@ namespace Traceability_System.Forms
             {
                 //Process finish 
                 TimerScan.Stop();
+                connector.ModbusGreenLightOn();
                 UpdatePiecesState();
                 ContextInfo.OpenNewFormEvent(new ScannedPiecesEndForm(ScannedPieces, ContextInfo, CurrentGeneration,SerialNumbers, connector));
                 return;
@@ -79,15 +80,13 @@ namespace Traceability_System.Forms
                     if (!ValidateGeneration())
                     {
                         //Different generation detected for second gen scanning process
-                        SendModbusSignal(Color.Red);
                         ContextInfo.AuthorizationRequiredEvent("authorization");
                         return;
                     }
 
                     if (!ValidateExistance())
                     {
-                        //Piece
-                        SendModbusSignal(Color.Red);
+                        //Piece exist with another finish good
                         ContextInfo.AuthorizationRequiredEvent("authorization2");
                         return;
                     }
@@ -116,7 +115,6 @@ namespace Traceability_System.Forms
             if (piece.Generation != CurrentGeneration)
             {
                 //Different generation detected
-                SendModbusSignal(Color.Red);
                 ContextInfo.AuthorizationRequiredEvent("authorization");
                 return;
             }
@@ -192,25 +190,9 @@ namespace Traceability_System.Forms
                 LblComponent.Text = $"Componente #{CurrentComponentNumber}";
                 ChangeTextMainGuide("Codigo serial escaneado correctamente", Color.Green);
                 TxtPartNumber.Clear();
-                SendModbusSignal(Color.Green);
             }
         }
 
-        public void SendModbusSignal(Color color)
-        {
-            if (!connector.IsReading)
-            {
-                connector.StartConnection();
-            }
-            if (color == Color.Green)
-            {
-                connector.ModbusGreenLightOn();
-            }
-            else
-            {
-                connector.ModbusRedLightOn();
-            }
-        }
         private bool GetAndValidateSerialNumber()
         {
             SerialNumberRepository repo = new SerialNumberRepository();
@@ -242,7 +224,7 @@ namespace Traceability_System.Forms
 
             if (serialNumber.Active == false)
             {
-                ChangeTextMainGuide($"El numero serial esta deshabiliado", Color.Red);
+                ChangeTextMainGuide($"El numero serial esta deshabilitado", Color.Red);
                 return false;
             }
 
